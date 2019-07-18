@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Wed Jul 17 10:25:32 KST 2019
+0.baseType=DIRECTORY
+0.base=C\:\\Loginn\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out
+0.path=classes.dex
+0.set=DEX
+count=1

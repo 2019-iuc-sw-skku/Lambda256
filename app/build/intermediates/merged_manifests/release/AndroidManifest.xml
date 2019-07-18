@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.softcampus.login"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="29" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:icon="@drawable/logo"
+        android:label="SKKOIN"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="kr.co.softcampus.login.Splash"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="kr.co.softcampus.login.MainActivity" />
+        <activity
+            android:name="kr.co.softcampus.login.Loginerrorpopup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name="kr.co.softcampus.login.SearchID" />
+        <activity android:name="kr.co.softcampus.login.Register" />
+        <activity android:name="kr.co.softcampus.login.SearchRecom" />
+    </application>
+
+</manifest>

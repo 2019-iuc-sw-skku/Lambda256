@@ -1,0 +1,4 @@
+#Wed Jul 17 10:25:32 KST 2019
+base.0=C\:\\Loginn\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out
+path.0=classes.dex
+renamed.0=classes.dex
