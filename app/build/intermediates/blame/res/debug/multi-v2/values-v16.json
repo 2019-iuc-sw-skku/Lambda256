@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Loginn\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "/Users/keonyoung-shim/Downloads/Loginn 2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\배수영\\.gradle\\caches\\transforms-2\\files-2.1\\1ac0bf80eca854b09212615d5f5bb1c3\\res\\values-v16\\values-v16.xml",
+                    "source": "/Users/keonyoung-shim/.gradle/caches/transforms-2/files-2.1/2f01fcfbc2af6103c1d5465f2ecc4a03/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/keonyoung-shim/.gradle/caches/transforms-2/files-2.1/6c694f145fac8f308b3aa01795179772/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\배수영\\.gradle\\caches\\transforms-2\\files-2.1\\ac96d413e61d5bfb3d9974a842759b9f\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

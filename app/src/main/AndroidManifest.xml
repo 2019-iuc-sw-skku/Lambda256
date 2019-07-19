@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.softcampus.login">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="SKKOIN"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".a_Firstscreen"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".b_LoginActivity"/>
+        <activity android:name=".d_SearchPW.d_SearchPW"/>
+
+        <activity android:name=".e_Register.e_SecondRegister"/>
+        <activity
+            android:name=".c_Login.c_Loginmailerrorpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+
+        <activity
+            android:name=".c_Login.c_Loginpwerrorpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+
+        <activity android:name=".e_Register.e_FirstRegister"/>
+        <activity
+            android:name=".d_SearchPW.d_Sendemailpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".e_Register.e_Sendemail1popup"
+            android:theme="@android:style/Theme.Dialog"/>
+
+        <activity android:name=".e_Register.e_EndRegister"/>
+        <activity android:name=".g_MainScreen"/>
+        <activity
+            android:name=".e_Register.e_nicknamepopup"
+            android:theme="@android:style/Theme.Dialog"/>
+
+        <activity android:name=".f_Recommend.f_SearchRecom"/>
+        <activity
+            android:name=".f_Recommend.f_recomtruepopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".f_Recommend.f_recomfalsepopup"
+            android:theme="@android:style/Theme.Dialog"/>
+
+    </application>
+
+</manifest>

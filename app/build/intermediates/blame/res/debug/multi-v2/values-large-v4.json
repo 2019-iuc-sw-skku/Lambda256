@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Loginn\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "/Users/keonyoung-shim/Downloads/Loginn 2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\배수영\\.gradle\\caches\\transforms-2\\files-2.1\\1ac0bf80eca854b09212615d5f5bb1c3\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "/Users/keonyoung-shim/.gradle/caches/transforms-2/files-2.1/6c694f145fac8f308b3aa01795179772/res/values-large-v4/values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

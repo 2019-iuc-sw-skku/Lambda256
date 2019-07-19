@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/LogoImage"
+        android:layout_width="match_parent"
+        android:layout_height="119dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/logo2" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:layout_marginBottom="40dp"
+        android:text="회원가입"
+
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/EditText_Email"
+            android:layout_width="214dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/mybutton"
+            android:ems="10"
+            android:hint="   SKKU 이메일"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@android:color/black"
+            android:textSize="14sp"
+            android:typeface="sans" />
+
+        <Button
+            android:id="@+id/verify_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/loginmybutton"
+            android:text="인증요청"
+            android:textColor="#FAFAFA" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Email_recheck_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="10dp"
+        tools:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/EditText_verify_code"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/mybutton"
+        android:ems="10"
+        android:hint="   인증번호"
+        android:inputType="numberSigned"
+        android:textColorHint="@android:color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/code_recheck_TextView"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="10dp"
+        tools:visibility="invisible" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="110dp" />
+
+    <Button
+        android:id="@+id/Check_Button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/loginmybutton"
+        android:lineSpacingExtra="18sp"
+        android:text="확인"
+        android:textColor="#FAFAFA"
+        android:textSize="18sp"
+        android:typeface="sans" />
+
+</LinearLayout>

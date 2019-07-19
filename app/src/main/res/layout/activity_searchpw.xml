@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="119dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/logo2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:text="비밀번호 찾기"
+        android:textColorHint="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/mybutton"
+        android:ems="10"
+        android:hint="   SKKU 이메일"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@android:color/black"
+        android:textSize="14sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="183dp" />
+
+    <Button
+        android:id="@+id/Check"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/loginmybutton"
+        android:lineSpacingExtra="18sp"
+        android:text="확인"
+        android:textColor="#FAFAFA"
+        android:textSize="18sp"
+        android:typeface="sans" />
+
+</LinearLayout>

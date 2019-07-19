@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Loginn\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rPT\\values-pt-rPT.xml",
+            "outputFile": "/Users/keonyoung-shim/Downloads/Loginn 2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\배수영\\.gradle\\caches\\transforms-2\\files-2.1\\1ac0bf80eca854b09212615d5f5bb1c3\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "source": "/Users/keonyoung-shim/.gradle/caches/transforms-2/files-2.1/6c694f145fac8f308b3aa01795179772/res/values-pt-rPT/values-pt-rPT.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\배수영\\.gradle\\caches\\transforms-2\\files-2.1\\ac96d413e61d5bfb3d9974a842759b9f\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "source": "/Users/keonyoung-shim/.gradle/caches/transforms-2/files-2.1/2f01fcfbc2af6103c1d5465f2ecc4a03/res/values-pt-rPT/values-pt-rPT.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

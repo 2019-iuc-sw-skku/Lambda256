@@ -19,7 +19,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="kr.co.softcampus.login.Splash"
+            android:name="kr.co.softcampus.login.a_Firstscreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -28,39 +28,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="kr.co.softcampus.login.MainActivity" />
-        <activity android:name="kr.co.softcampus.login.SearchPW" />
-        <activity android:name="kr.co.softcampus.login.Register2" />
+        <activity android:name="kr.co.softcampus.login.b_LoginActivity" />
+        <activity android:name="kr.co.softcampus.login.d_SearchPW.d_SearchPW" />
+        <activity android:name="kr.co.softcampus.login.e_Register.e_SecondRegister" />
         <activity
-            android:name="kr.co.softcampus.login.Loginemailrrorpopup"
+            android:name="kr.co.softcampus.login.c_Login.c_Loginmailerrorpopup"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name="kr.co.softcampus.login.Loginpwerrorpopup"
+            android:name="kr.co.softcampus.login.c_Login.c_Loginpwerrorpopup"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name="kr.co.softcampus.login.Register" />
+        <activity android:name="kr.co.softcampus.login.e_Register.e_FirstRegister" />
         <activity
-            android:name="kr.co.softcampus.login.Sendemailpopup"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity
-            android:name="kr.co.softcampus.login.Sendemail1popup"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity android:name="kr.co.softcampus.login.Ready" />
-        <activity android:name="kr.co.softcampus.login.MainScreen" />
-        <activity
-            android:name="kr.co.softcampus.login.nicknamepopup"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity android:name="kr.co.softcampus.login.SearchRecom" />
-        <activity
-            android:name="kr.co.softcampus.login.recomtruepopup"
+            android:name="kr.co.softcampus.login.d_SearchPW.d_Sendemailpopup"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name="kr.co.softcampus.login.recomfalsepopup"
+            android:name="kr.co.softcampus.login.e_Register.e_Sendemail1popup"
             android:theme="@android:style/Theme.Dialog" />
-
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="kr.co.softcampus.login.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
+        <activity android:name="kr.co.softcampus.login.e_Register.e_EndRegister" />
+        <activity android:name="kr.co.softcampus.login.g_MainScreen" />
+        <activity
+            android:name="kr.co.softcampus.login.e_Register.e_nicknamepopup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name="kr.co.softcampus.login.f_Recommend.f_SearchRecom" />
+        <activity
+            android:name="kr.co.softcampus.login.f_Recommend.f_recomtruepopup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name="kr.co.softcampus.login.f_Recommend.f_recomfalsepopup"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>
