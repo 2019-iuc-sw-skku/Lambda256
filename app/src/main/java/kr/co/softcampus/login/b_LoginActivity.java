@@ -130,9 +130,11 @@ public class b_LoginActivity extends AppCompatActivity {
                         } catch (Exception e){
                             e.printStackTrace();
                         }
+                        Constant.EMAIL = etEmail.getText().toString();
                         Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
                         startActivity(intent2);
                         save();
+                        finish();
                         break;
                     default:
                         Toast.makeText(getApplicationContext(), "Error occured!", Toast.LENGTH_SHORT).show();

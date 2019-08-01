@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import kr.co.softcampus.login.R;
 
 public class c_Loginpwerrorpopup extends Activity {
+
+    ImageView imageView6;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -16,6 +19,9 @@ public class c_Loginpwerrorpopup extends Activity {
         //타이틀바 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popup_loginpwerror);
+
+        imageView6=findViewById(R.id.imageView6);
+        imageView6.setImageResource(R.drawable.error);
     }
 
     public void mOnClose(View v){

@@ -9,8 +9,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /*
  * Class name: ConnectionClass
@@ -37,8 +39,8 @@ public class ConnectionClass {
      */
 
     private void setHeader(Server to){
+        con.setRequestProperty("Content-type", "application/json");
 
-//        con.setRequestProperty("Content-type", "application/json");
         switch (to){
             case SERVER:
                 break;
@@ -107,7 +109,7 @@ public class ConnectionClass {
 //                    json = jsonObject.toString();
 //                    Log.d("Conn_JsonObject", json);
                     /* 보낼 객체 JSON 화 */
-                    setHeader(to);
+                    con.setRequestProperty("Authorization", Constant.getApikey());
 
                     /* http 소켓 만들기 */
                     con.setRequestMethod("GET");
@@ -150,9 +152,9 @@ public class ConnectionClass {
                     /* http 소켓 만들기 */
 
                     /* 서버에 보내기 */
-                    DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-                    dos.writeBytes(json);
-                    dos.flush();
+                    OutputStream os = con.getOutputStream();
+                    os.write(json.getBytes(StandardCharsets.UTF_8));
+                    os.flush();
                     /* 서버에 보내기 */
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -168,7 +170,7 @@ public class ConnectionClass {
                 try {
                     resultCode = con.getResponseCode();
                     result = con.getResponseMessage();
-                    Log.e("RESULT", resultCode+"");
+                    Log.e("RESULT", resultCode+", " +result);
                     is = con.getInputStream();
                     result = convertInputStreamToString(is);
                 } catch (Exception e) {

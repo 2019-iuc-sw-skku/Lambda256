@@ -28,7 +28,7 @@
         android:textSize="25dp" />
 
     <EditText
-        android:id="@+id/EditText_Email"
+        android:id="@+id/EditText_password"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="40dp"
@@ -52,7 +52,7 @@
         tools:visibility="invisible" />
 
     <EditText
-        android:id="@+id/EditText_verify_code"
+        android:id="@+id/EditText_nickname"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="40dp"

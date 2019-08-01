@@ -44,11 +44,14 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".e_Register.e_EndRegister"/>
         <activity android:name=".e_Register.e_FirstRegister"/>
-        <activity android:name=".e_Register.e_nicknamepopup"/>
+        <activity android:name=".e_Register.e_nicknamepopup"
+            android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".e_Register.e_SecondRegister"/>
 
-        <activity android:name=".f_Recommend.f_recomfalsepopup"/>
-        <activity android:name=".f_Recommend.f_recomtruepopup"/>
+        <activity android:name=".f_Recommend.f_recomfalsepopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".f_Recommend.f_recomtruepopup"
+            android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".f_Recommend.f_SearchRecom"/>
 
         <activity android:name=".g_MainScreen"/>
@@ -56,25 +59,33 @@
         <activity android:name=".h_mypage.h_mypage2"/>
 
         <activity android:name=".i_send.i_sendfinish"/>
-        <activity android:name=".i_send.i_sendpopup"/>
+        <activity android:name=".i_send.i_sendpopup"
+            android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".i_send.i_sendfirst"/>
         <activity android:name=".i_send.i_sendcheck"/>
         <activity android:name=".i_send.i_sendfail"/>
 
-        <activity android:name=".j_giftcon.j_giftcheckpopup"/>
-        <activity android:name=".j_giftcon.j_giftcontentpopup"/>
-        <activity android:name=".j_giftcon.j_giftfailpopup"/>
+        <activity android:name=".j_giftcon.j_giftcheckpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".j_giftcon.j_giftcontentpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".j_giftcon.j_giftfailpopup"
+            android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".j_giftcon.j_giftmain"/>
         <activity android:name=".j_giftcon.j_giftstore"/>
-        <activity android:name=".j_giftcon.j_giftsuccesspopup"/>
+        <activity android:name=".j_giftcon.j_giftsuccesspopup"
+            android:theme="@android:style/Theme.Dialog"/>
 
         <activity android:name=".k_infomain"/>
 
         <activity android:name=".l_setting.l_settingfirst"/>
         <activity android:name=".l_setting.l_alarm"/>
-        <activity android:name=".l_setting.l_alarmpopup"/>
-        <activity android:name=".l_setting.l_exitpopup"/>
-        <activity android:name=".l_setting.l_logoutpopup"/>
+        <activity android:name=".l_setting.l_alarmpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".l_setting.l_exitpopup"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".l_setting.l_logoutpopup"
+            android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".l_setting.l_rule"/>
         <activity android:name=".l_setting.l_exit"/>
 
