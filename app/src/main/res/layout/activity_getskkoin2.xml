@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/getskkoin2top1"
+        layout="@layout/top1_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        />
+
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="스코인(SKKOIN)이란?"
+        android:textColor="@color/Black"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="left"
+        android:text="SKKU(Sungkyunkwan University)와 COIN의 합성어로 성균관대학교 코인이란 뜻을 가진 이름입니다."
+        android:textColor="@color/Black"
+        android:textSize="17sp"
+        app:fontFamily="@font/noto_sans" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:layout_margin="20dp"
+        android:gravity="left"
+        android:text="2019년 성균관대학교와 기업의 산학협력 활동 간 블록체인 기업인 람다256과 학생들의 협업으로 만들어진 블록체인 어플리케이션입니다. 학내 구성원들의 다양한 활동을 통하여 보상인 스코인을 얻어 편의시설, 여가 등 다양한 혜택을 누릴 수 있습니다."
+        android:textColor="@color/Black"
+        android:textSize="17sp"
+        app:fontFamily="@font/noto_sans" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <include
+        android:id="@+id/getskkoin2Bot"
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="0" />
+</LinearLayout>

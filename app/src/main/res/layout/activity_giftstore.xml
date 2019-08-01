@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/giftstoretop"
+        layout="@layout/top1_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="총 2개"
+        android:textColor="@color/Black" />
+
+    <ListView
+        android:id="@+id/my_listview"
+        android:layout_width="match_parent"
+        android:layout_height="530dp" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <include
+        android:id="@+id/giftstorebot"
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="0" />
+
+</LinearLayout>

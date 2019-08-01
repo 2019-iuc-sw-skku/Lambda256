@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/giftcon1top"
+        layout="@layout/top1_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:srcCompat="@drawable/q" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="6"
+            android:gravity="center|left"
+            android:text="기프티콘 환불은 가능한가요?"
+            android:textColor="@color/Black"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:text="기프티콘은 구매 시 환불 및 교환이 불가합니다"
+        android:textColor="@color/Black" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <include
+        android:id="@+id/giftcon1bot"
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="0" />
+
+</LinearLayout>

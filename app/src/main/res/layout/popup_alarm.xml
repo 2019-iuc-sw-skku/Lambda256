@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="400dp">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/alarm_1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="알람을 설정하시겠습니까?"
+        android:textColor="@color/Black"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/off"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/mybuttonwhite"
+            android:text="끄기" />
+
+        <Button
+            android:id="@+id/on"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/mybuttonblue"
+            android:text="켜기"
+            android:textColor="#FAFAFA" />
+
+    </LinearLayout>
+</LinearLayout>

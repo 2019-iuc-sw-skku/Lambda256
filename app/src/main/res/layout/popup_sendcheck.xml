@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="400dp">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="44dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/get_money" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="받는이:  "
+                android:textColor="@color/Black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:gravity="left"
+                android:text="이성균"
+                android:textColor="@color/Black" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="146dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="스코인:  "
+                android:textColor="@color/Black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:gravity="left"
+                android:text="1000"
+                android:textColor="@color/Black" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="송금하시겠습니까?"
+        android:textColor="@color/Black"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_recommender"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:onClick="mOnClose1"
+            android:background="@drawable/mybuttonwhite"
+            android:text="취소" />
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/mybuttonblue"
+            android:onClick="mOnClose2"
+            android:text="송금"
+            android:textColor="#FAFAFA" />
+
+    </LinearLayout>
+</LinearLayout>

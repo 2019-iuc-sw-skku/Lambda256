@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/getskkoin1top1"
+        layout="@layout/top1_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="스코인으로 즐기는"
+        android:textColor="@color/Black"
+        android:textSize="35sp"
+        app:fontFamily="@font/noto_sans" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:text="다양한 혜택!"
+        android:textColor="@color/Black"
+        android:textSize="35sp"
+        app:fontFamily="@font/noto_sans" />
+
+    <Button
+        android:id="@+id/Button11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="#00FF0000"
+        android:gravity="center|left"
+        android:text="스코인이란?"
+        android:textColor="@color/Black"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/Button12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="#00FF0000"
+        android:gravity="center|left"
+        android:text="스코인 이용방법"
+        android:textColor="@color/Black"
+        android:textSize="15sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <include
+        android:id="@+id/getskkoin1Bot"
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="0" />
+</LinearLayout>

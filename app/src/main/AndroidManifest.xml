@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.softcampus.login">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="SKKOIN"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config">
+        <activity
+            android:name=".a_Firstscreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".b_LoginActivity" />
+
+        <activity
+            android:name=".c_Login.c_Loginmailerrorpopup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".c_Login.c_Loginpwerrorpopup"
+            android:theme="@android:style/Theme.Dialog" />
+
+        <activity android:name=".d_SearchPW.d_SearchPW" />
+        <activity
+            android:name=".d_SearchPW.d_Sendemailpopup"
+            android:theme="@android:style/Theme.Dialog" />
+
+        <activity
+            android:name=".e_Register.e_Sendemail1popup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".e_Register.e_EndRegister"/>
+        <activity android:name=".e_Register.e_FirstRegister"/>
+        <activity android:name=".e_Register.e_nicknamepopup"/>
+        <activity android:name=".e_Register.e_SecondRegister"/>
+
+        <activity android:name=".f_Recommend.f_recomfalsepopup"/>
+        <activity android:name=".f_Recommend.f_recomtruepopup"/>
+        <activity android:name=".f_Recommend.f_SearchRecom"/>
+
+        <activity android:name=".g_MainScreen"/>
+        <activity android:name=".h_mypage.h_mypage1"/>
+        <activity android:name=".h_mypage.h_mypage2"/>
+
+        <activity android:name=".i_send.i_sendfinish"/>
+        <activity android:name=".i_send.i_sendpopup"/>
+        <activity android:name=".i_send.i_sendfirst"/>
+        <activity android:name=".i_send.i_sendcheck"/>
+        <activity android:name=".i_send.i_sendfail"/>
+
+        <activity android:name=".j_giftcon.j_giftcheckpopup"/>
+        <activity android:name=".j_giftcon.j_giftcontentpopup"/>
+        <activity android:name=".j_giftcon.j_giftfailpopup"/>
+        <activity android:name=".j_giftcon.j_giftmain"/>
+        <activity android:name=".j_giftcon.j_giftstore"/>
+        <activity android:name=".j_giftcon.j_giftsuccesspopup"/>
+
+        <activity android:name=".k_infomain"/>
+
+        <activity android:name=".l_setting.l_settingfirst"/>
+        <activity android:name=".l_setting.l_alarm"/>
+        <activity android:name=".l_setting.l_alarmpopup"/>
+        <activity android:name=".l_setting.l_exitpopup"/>
+        <activity android:name=".l_setting.l_logoutpopup"/>
+        <activity android:name=".l_setting.l_rule"/>
+        <activity android:name=".l_setting.l_exit"/>
+
+        <activity android:name=".m_getskkoin.m_downloadImage"/>
+        <activity android:name=".m_getskkoin.m_getskkoin1"/>
+        <activity android:name=".m_getskkoin.m_getskkoin2"/>
+        <activity android:name=".m_getskkoin.m_getskkoin3"/>
+
+        <activity android:name=".n_center.n_centerfirst"/>
+        <activity android:name=".n_center.n_giftcon"/>
+        <activity android:name=".n_center.n_giftcon1"/>
+        <activity android:name=".n_center.n_personinfo"/>
+        <activity android:name=".n_center.n_personinfo1"/>
+        <activity android:name=".n_center.n_send"/>
+        <activity android:name=".n_center.n_send1"/>
+        <activity android:name=".n_center.n_skkoin"/>
+        <activity android:name=".n_center.n_skkoin1"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

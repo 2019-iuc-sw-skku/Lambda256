@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/getskkoin3top1"
+        layout="@layout/top1_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpPager"
+        android:layout_width="match_parent"
+        android:layout_height="528dp" />
+
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        app:ci_drawable="@drawable/blue_radius"
+        app:ci_height="7dp"
+        app:ci_width="7dp"
+        app:ci_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <include
+        android:id="@+id/getskkoin3Bot"
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="0" />
+</LinearLayout>
