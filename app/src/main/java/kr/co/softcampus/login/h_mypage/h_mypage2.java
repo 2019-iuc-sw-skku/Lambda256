@@ -46,7 +46,6 @@ public class h_mypage2 extends Activity {
         homebutton=findViewById(R.id.homebutton);
         bell=findViewById(R.id.bell);
 
-
         screentext=top.findViewById(R.id.screentext);
         screentext.setText("프로필 편집");
 

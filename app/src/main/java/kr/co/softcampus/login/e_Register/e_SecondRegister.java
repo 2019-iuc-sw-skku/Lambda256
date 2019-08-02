@@ -60,18 +60,17 @@ public class e_SecondRegister extends Activity {
                     }
                 };
 
-                AsyncTask<String, Void, Boolean> asyncTask1 = new AsyncTask<String, Void, Boolean>() {
+                AsyncTask<String, Void, Integer> asyncTask1 = new AsyncTask<String, Void, Integer>() {
                     @Override
-                    protected Boolean doInBackground(String... strings) {
+                    protected Integer doInBackground(String... strings) {
                         ConnectionClass cc = new ConnectionClass();
                         try {
                             JSONObject result = cc.MyConnection(Server.SERVER, Constant.SIGNUP, ConType.TYPE_POST, new JSONObject().put("email", email).put("nickname", nickname).put("waddress", strings[0]));
-                            Log.e("FINR", result.toString());
-                            return result.getBoolean("result");
+                            return result.getInt("code");
                         } catch (Exception e){
                             e.printStackTrace();
                         }
-                        return false;
+                        return 0;
                     }
                 };
 
@@ -79,16 +78,17 @@ public class e_SecondRegister extends Activity {
 
                 JSONObject wreturn = null;
                 Boolean wsuccess = false;
-                Boolean ssuccess = false;
+                int ssuccess = -1;
                 try {
                     wreturn = asyncTask.get(10, TimeUnit.SECONDS);
                     wsuccess = wreturn.getBoolean("result");
+                    Constant.WADDRESS=wreturn.getJSONObject("data").getString("address");
                 } catch (Exception e){
                     e.printStackTrace();
                 }
                 if(wsuccess){
                     try {
-                        asyncTask1.execute(wreturn.getJSONObject("data").getString("address"));
+                        asyncTask1.execute(Constant.WADDRESS);
                         ssuccess = asyncTask1.get(10, TimeUnit.SECONDS);
                     } catch (Exception e){
                         e.printStackTrace();
@@ -98,9 +98,10 @@ public class e_SecondRegister extends Activity {
                     return;
                 }
 
-                if(ssuccess){
-                    Intent intent = new Intent(e_SecondRegister.this, kr.co.softcampus.login.f_Recommend.f_SearchRecom.class);
+                if(ssuccess == 200 || ssuccess == 500){
+                    Intent intent = new Intent(e_SecondRegister.this, e_EndRegister.class);
                     startActivityForResult(intent, 1);
+                    finish();
                 } else {
                     Toast.makeText(e_SecondRegister.this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }

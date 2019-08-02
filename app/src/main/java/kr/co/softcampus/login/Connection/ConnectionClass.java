@@ -168,9 +168,11 @@ public class ConnectionClass {
         switch (conType) {
             case TYPE_POST:
                 try {
-                    resultCode = con.getResponseCode();
-                    result = con.getResponseMessage();
-                    Log.e("RESULT", resultCode+", " +result);
+                    Log.e("RESULT", con.getResponseMessage()+", " +con.getResponseCode());
+                    if(addurl == Constant.SIGNUP && con.getResponseCode() == 500){
+                        con.disconnect();
+                        return new JSONObject().put("code", 500);
+                    }
                     is = con.getInputStream();
                     result = convertInputStreamToString(is);
                 } catch (Exception e) {
@@ -200,6 +202,7 @@ public class ConnectionClass {
         con.disconnect();     // 서버 연결 해제
         try {
             returnJson = new JSONObject(result);
+            returnJson.put("code", con.getResponseCode());
         } catch (Exception e){
             e.printStackTrace();
         }
