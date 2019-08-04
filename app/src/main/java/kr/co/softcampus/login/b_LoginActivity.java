@@ -76,6 +76,9 @@ public class b_LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                // 로그인 요청 (현재 private key 를 email+password로 하고 있음)
                 AsyncTask<String, Void, JSONObject> asyncTask = new AsyncTask<String, Void, JSONObject>() {
                     @Override
                     protected JSONObject doInBackground(String... strings) {
@@ -91,10 +94,12 @@ public class b_LoginActivity extends AppCompatActivity {
                         return result;
                     }
                 };
+
                 pk = etEmail.getText().toString() + etPw.getText().toString();
                 asyncTask.execute(pk);
                 Boolean results = false;
                 JSONObject result = null;
+
                 try {
                     result = asyncTask.get(10, TimeUnit.SECONDS);
                     results = result.getBoolean("result");
@@ -103,6 +108,7 @@ public class b_LoginActivity extends AppCompatActivity {
                 }
 
 
+                // 결과 - 이메일 혹은 비밀번호가 틀렸는지는 아직 체크하지 않음
                 if(results) {
                     return_state = c_RETURN_STATE.SUCCESS;
                 } else {
@@ -141,6 +147,8 @@ public class b_LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+
 
         //비밀번호 화면으로
         SPW.setOnClickListener(new View.OnClickListener() {

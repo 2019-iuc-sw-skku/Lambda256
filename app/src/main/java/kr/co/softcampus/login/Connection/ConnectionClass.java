@@ -105,37 +105,18 @@ public class ConnectionClass {
                 try {
                     if(addurl == Constant.WALLETCHECK)
                         con = (HttpURLConnection) new URL("https://api.luniverse.io/tx/v1.0/wallets/bridge?walletType="+jsonObject.get("walletType")+"&userKey="+jsonObject.get("userKey")).openConnection();
-                    /* 보낼 객체 JSON 화 */
-//                    json = jsonObject.toString();
-//                    Log.d("Conn_JsonObject", json);
-                    /* 보낼 객체 JSON 화 */
+
                     con.setRequestProperty("Authorization", Constant.getApikey());
 
                     /* http 소켓 만들기 */
                     con.setRequestMethod("GET");
-//                    setHeader(to);
-//                    con.setDoOutput(true);
                     con.setDoInput(true);
                     /* http 소켓 만들기 */
 
-                    /* 서버에 보내기 */
-//                    DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-//                    dos.writeBytes(json);
-//                    dos.flush();
-                    /* 서버에 보내기 */
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                //usage example
-//                if (url.contains("blah blah")) {
-//                    try {
-//                        httpURLConnection.setDoInput(true);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                } else {
-//                    result = null;
-//                }
+
                 break;
             case TYPE_POST:
                 try {
@@ -161,7 +142,6 @@ public class ConnectionClass {
                 }
                 break;
             default:
-
         }
 
         /* 결과값 받기 */
@@ -194,7 +174,6 @@ public class ConnectionClass {
                     e.printStackTrace();
                 }
                 break;
-
         }
 
         /* 결과값 받기 */
@@ -206,12 +185,7 @@ public class ConnectionClass {
         } catch (Exception e){
             e.printStackTrace();
         }
-//        try {
-//            returnJson.put("resultCode", resultCode);
-//            returnJson.put("result", result);
-//        } catch (JSONException e){
-//            e.printStackTrace();
-//        }
+
         return returnJson;
     }
 
