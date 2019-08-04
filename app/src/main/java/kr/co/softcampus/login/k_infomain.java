@@ -2,6 +2,7 @@ package kr.co.softcampus.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
+import java.util.concurrent.TimeUnit;
+
+import kr.co.softcampus.login.Connection.ConType;
+import kr.co.softcampus.login.Connection.ConnectionClass;
+import kr.co.softcampus.login.Connection.Constant;
+import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.f_Recommend.f_SearchRecom;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.h_mypage.h_mypage2;
@@ -42,7 +51,7 @@ public class k_infomain extends Activity {
 
     View bot;
     View top;
-    TextView screentext;
+    TextView screentext, nickname;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,6 +60,8 @@ public class k_infomain extends Activity {
 
         bot = findViewById(R.id.infoBot);
         top=findViewById(R.id.infotop1);
+
+        nickname = findViewById(R.id.textView14);
 
         screentext=top.findViewById(R.id.screentext);
         screentext.setText("안내");
@@ -97,6 +108,27 @@ public class k_infomain extends Activity {
         getskkoin=findViewById(R.id.getskkoin);
         center=findViewById(R.id.center);
         commend=findViewById(R.id.commend);
+
+        AsyncTask<String, Void, String> nickAsycnTask = new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                ConnectionClass cc = new ConnectionClass();
+                try {
+                    JSONObject result = cc.MyConnection(Server.SERVER, Constant.NICKNAME, ConType.TYPE_POST, new JSONObject().put("email", Constant.EMAIL));
+                    return result.getJSONObject("data").getString("nickname");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return "Anonymous";
+            }
+        };
+
+        nickAsycnTask.execute();
+        try {
+            nickname.setText(nickAsycnTask.get(10, TimeUnit.SECONDS));
+        } catch (Exception e){
+            nickname.setText("Anonymous");
+        }
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override

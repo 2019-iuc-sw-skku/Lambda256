@@ -3,6 +3,8 @@ package kr.co.softcampus.login.f_Recommend;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
+import java.util.concurrent.TimeUnit;
+
+import kr.co.softcampus.login.Connection.ConType;
+import kr.co.softcampus.login.Connection.ConnectionClass;
+import kr.co.softcampus.login.Connection.Constant;
+import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
 public class f_SearchRecom extends Activity {
@@ -24,7 +34,7 @@ public class f_SearchRecom extends Activity {
     EditText editText_address_recommender;
 
     Boolean flag;
-
+    String address;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -48,14 +58,7 @@ public class f_SearchRecom extends Activity {
             public void onClick(View view) {
 
                 // 추천인 주소 입력받음
-                String address = editText_address_recommender.getText().toString();
-
-                // 디버깅용 임시 코드
-                if (address.equals("temp")) {
-
-                    flag = true;
-
-                }
+                address = editText_address_recommender.getText().toString();
 
 
                 /*
@@ -63,12 +66,35 @@ public class f_SearchRecom extends Activity {
                     ->   flag = true;
 
                  */
+                AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
+                    @Override
+                    protected Boolean doInBackground(String... strings) {
+                        ConnectionClass cc = new ConnectionClass();
+                        try{
+                            JSONObject result = cc.MyConnection(Server.SERVER, Constant.RECOMMEND, ConType.TYPE_POST, new JSONObject().put("s_waddress", Constant.WADDRESS).put("r_waddress", address));
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        return true;
+                    }
+                };
+
+                asyncTask.execute();
+                try{
+                    flag = asyncTask.get(10, TimeUnit.SECONDS);
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+
+
 
 
                 if (flag == true) {
 
                     Toast.makeText(f_SearchRecom.this, "추천인에게 코인이 지급되었습니다.", Toast.LENGTH_LONG).show();
 
+                    Intent intent = new Intent(f_SearchRecom.this, kr.co.softcampus.login.e_Register.e_EndRegister.class);
+                    startActivityForResult(intent, 1);
                     finish(); // 이전 화면으로 돌아감
 
                 } else {
@@ -121,10 +147,10 @@ public class f_SearchRecom extends Activity {
      */
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
 
         Toast.makeText(this, "추천인을 입력하지 않으셨습니다.", Toast.LENGTH_SHORT).show();
         
-        super.onBackPressed();
 
     }
 

@@ -41,9 +41,11 @@ public class g_MainScreen extends Activity {
 
     TextView walletAddress;
     TextView token;
+    TextView nickname;
 
     View bot;
     View top;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class g_MainScreen extends Activity {
         imageView8 = findViewById(R.id.imageView8);
         imageView8.setImageResource(R.drawable.picture5);
 
-        bell=findViewById(R.id.bell);
+        bell = findViewById(R.id.bell);
         bell.setImageResource(R.drawable.bell);
 
         logo = findViewById(R.id.logo);
@@ -61,19 +63,20 @@ public class g_MainScreen extends Activity {
 
         bot = findViewById(R.id.mainpageBot);
 
-        top=findViewById(R.id.mainpagetop2);
+        top = findViewById(R.id.mainpagetop2);
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
         Mybutton.setImageResource(R.drawable.picture1);
-        Send=bot.findViewById(R.id.Send2);
+        Send = bot.findViewById(R.id.Send2);
         Send.setImageResource(R.drawable.picture2);
-        Purchase=bot.findViewById(R.id.Purchase2);
+        Purchase = bot.findViewById(R.id.Purchase2);
         Purchase.setImageResource(R.drawable.picture3);
-        Inform=bot.findViewById(R.id.Inform2);
+        Inform = bot.findViewById(R.id.Inform2);
         Inform.setImageResource(R.drawable.picture4);
 
         walletAddress = findViewById(R.id.walletaddress);
         token = findViewById(R.id.textView16);
+        nickname = findViewById(R.id.textView6);
 
 
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
@@ -90,14 +93,34 @@ public class g_MainScreen extends Activity {
             }
         };
 
+        AsyncTask<String, Void, String> nickAsycnTask = new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                ConnectionClass cc = new ConnectionClass();
+                try {
+                    JSONObject result = cc.MyConnection(Server.SERVER, Constant.NICKNAME, ConType.TYPE_POST, new JSONObject().put("email", Constant.EMAIL));
+                    return result.getJSONObject("data").getString("nickname");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return "Anonymous";
+            }
+        };
+
         asyncTask.execute();
         walletAddress.setText(Constant.WADDRESS);
         try {
             token.setText(asyncTask.get(10, TimeUnit.SECONDS));
-        } catch (Exception e){
+        } catch (Exception e) {
             token.setText("Connection Error");
         }
 
+        nickAsycnTask.execute();
+        try {
+            nickname.setText(nickAsycnTask.get(10, TimeUnit.SECONDS));
+        } catch (Exception e){
+            nickname.setText("Anonymous");
+        }
 
         walletAddress.setOnClickListener(new View.OnClickListener() {
             @Override

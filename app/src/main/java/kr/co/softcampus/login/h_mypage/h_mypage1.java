@@ -43,7 +43,7 @@ public class h_mypage1 extends Activity {
     ArrayList<list_item> list_itemArrayList;
     View bot;
     View top;
-    TextView screentext, walletAddress, token;
+    TextView screentext, walletAddress, token, nickname;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,6 +52,8 @@ public class h_mypage1 extends Activity {
 
         bot = findViewById(R.id.mypage1Bot);
         top = findViewById(R.id.mypage1top1);
+
+        nickname=findViewById(R.id.textView14);
 
         screentext=top.findViewById(R.id.screentext);
         screentext.setText("마이페이지");
@@ -95,6 +97,20 @@ public class h_mypage1 extends Activity {
             }
         };
 
+        AsyncTask<String, Void, String> nickAsycnTask = new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                ConnectionClass cc = new ConnectionClass();
+                try {
+                    JSONObject result = cc.MyConnection(Server.SERVER, Constant.NICKNAME, ConType.TYPE_POST, new JSONObject().put("email", Constant.EMAIL));
+                    return result.getJSONObject("data").getString("nickname");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return "Anonymous";
+            }
+        };
+
         asyncTask.execute();
         walletAddress.setText(Constant.WADDRESS);
         try {
@@ -103,6 +119,12 @@ public class h_mypage1 extends Activity {
             token.setText("Connection Error");
         }
 
+        nickAsycnTask.execute();
+        try {
+            nickname.setText(nickAsycnTask.get(10, TimeUnit.SECONDS));
+        } catch (Exception e){
+            nickname.setText("Anonymous");
+        }
 
         editbutton=findViewById(R.id.editbutton);
 

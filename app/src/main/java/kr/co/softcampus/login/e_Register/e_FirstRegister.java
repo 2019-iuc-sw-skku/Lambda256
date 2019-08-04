@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -20,9 +21,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import kr.co.softcampus.login.Connection.ConType;
+import kr.co.softcampus.login.Connection.ConnectionClass;
+import kr.co.softcampus.login.Connection.Constant;
+import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
 public class e_FirstRegister extends Activity {
@@ -43,6 +50,8 @@ public class e_FirstRegister extends Activity {
 
     PopupWindow mPopupWindow;
 
+    Boolean canGo;
+
 
     // variables
     String Email;
@@ -60,7 +69,7 @@ public class e_FirstRegister extends Activity {
         return isNormal;
     }
 
-    public void show_msg(){
+    public void show_msg() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
 
@@ -70,7 +79,7 @@ public class e_FirstRegister extends Activity {
 
         // Alert을 이용해 종료시키기
         AlertDialog.Builder dialog = new AlertDialog.Builder(e_FirstRegister.this);
-        dialog  .setTitle("")
+        dialog.setTitle("")
                 .setMessage("인증 요청 메시지를 보낼까요?")
                 .setPositiveButton("아니요", new DialogInterface.OnClickListener() {
                     @Override
@@ -81,7 +90,7 @@ public class e_FirstRegister extends Activity {
                 .setNegativeButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent=new Intent(e_FirstRegister.this, e_Sendemail1popup.class);
+                        Intent intent = new Intent(e_FirstRegister.this, e_Sendemail1popup.class);
                         startActivityForResult(intent, 1);
                         // BackEnd 인증요청 팝업창 띄움
 /*                        View popupLayout = getLayoutInflater().inflate(R.layout.popup_email, null);
@@ -114,13 +123,13 @@ public class e_FirstRegister extends Activity {
                 }).create().show();
 
 
-
     }
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstregister);
+        canGo = false;
 
         // ID
         EditText_Email = findViewById(R.id.EditText_Email);
@@ -135,9 +144,6 @@ public class e_FirstRegister extends Activity {
         LogoImage = findViewById(R.id.LogoImage);
 
 
-
-
-
         //
         LogoImage.setImageResource(R.drawable.logo2);
 
@@ -149,16 +155,41 @@ public class e_FirstRegister extends Activity {
 
                 Email = EditText_Email.getText().toString();
 
-                if(checkEmail(Email) == false) {
+                if (checkEmail(Email) == false) {
                     Email_recheck_TextView.setText("이메일을 다시 확인해주세요");
-
-                }
-                else{
-
+                } else {
                     Email_recheck_TextView.setText("");
 
-                    show_msg();
+                    AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
+                        @Override
+                        protected Boolean doInBackground(String... strings) {
+                            ConnectionClass cc = new ConnectionClass();
 
+                            JSONObject result;
+                            try {
+                                result = cc.MyConnection(Server.SERVER, Constant.DUPCHECK, ConType.TYPE_POST, new JSONObject().put("email", Email));
+                                return result.getBoolean("result");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                return false;
+                            }
+                        }
+                    };
+
+                    asyncTask.execute();
+                    Boolean flag = false;
+                    try {
+                        flag = asyncTask.get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if (flag) {
+                        canGo = true;
+                        show_msg();
+                    } else {
+                        Toast.makeText(e_FirstRegister.this, "이미 등록된 사용자입니다.", Toast.LENGTH_SHORT).show();
+                    }
 
 
                     // BackEnd 에 인증요청하기
@@ -173,13 +204,17 @@ public class e_FirstRegister extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 인증번호 입력받기
-                String input_verify_code;
-                input_verify_code = EditText_password.getText().toString();
+                if (canGo) {
+                    Intent intent = new Intent(e_FirstRegister.this, e_SecondRegister.class);
+                    intent.putExtra("email", EditText_Email.getText().toString());
+                    startActivityForResult(intent, 1);
+                } else {
+                    // 인증번호 입력받기
+                    String input_verify_code;
+                    input_verify_code = EditText_password.getText().toString();
 
 
-
-                // BackEnd 에서 인증코드 확인할 것
+                    // BackEnd 에서 인증코드 확인할 것
                 /*
                     인증코드가 맞으면
                     verification_code_flag = true;
@@ -187,29 +222,23 @@ public class e_FirstRegister extends Activity {
                  */
 
 
-                // 아래 코드는 임시 코드 ( 디버깅을 위한 )
+                    // 아래 코드는 임시 코드 ( 디버깅을 위한 )
 
-                if(input_verify_code.equals("0000"))
-                    verification_code_flag = true;
+                    if (input_verify_code.equals("0000"))
+                        verification_code_flag = true;
 
 
-
-                if(verification_code_flag == false)
-                    code_recheck_TextView.setText("인증번호를 다시 확인해주세요");
-                else{
-                    Intent intent=new Intent(e_FirstRegister.this, e_EndRegister.class);
-                    startActivityForResult(intent, 1);
-
+                    if (verification_code_flag == false)
+                        code_recheck_TextView.setText("인증번호를 다시 확인해주세요");
+                    else {
+                        Intent intent = new Intent(e_FirstRegister.this, e_EndRegister.class);
+                        startActivityForResult(intent, 1);
+                    }
                 }
 
 
             }
         });
-
-
-
-
-
 
 
     }

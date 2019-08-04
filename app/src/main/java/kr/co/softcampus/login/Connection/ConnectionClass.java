@@ -9,8 +9,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /*
  * Class name: ConnectionClass
@@ -37,8 +39,8 @@ public class ConnectionClass {
      */
 
     private void setHeader(Server to){
+        con.setRequestProperty("Content-type", "application/json");
 
-//        con.setRequestProperty("Content-type", "application/json");
         switch (to){
             case SERVER:
                 break;
@@ -103,37 +105,18 @@ public class ConnectionClass {
                 try {
                     if(addurl == Constant.WALLETCHECK)
                         con = (HttpURLConnection) new URL("https://api.luniverse.io/tx/v1.0/wallets/bridge?walletType="+jsonObject.get("walletType")+"&userKey="+jsonObject.get("userKey")).openConnection();
-                    /* 보낼 객체 JSON 화 */
-//                    json = jsonObject.toString();
-//                    Log.d("Conn_JsonObject", json);
-                    /* 보낼 객체 JSON 화 */
-                    setHeader(to);
+
+                    con.setRequestProperty("Authorization", Constant.getApikey());
 
                     /* http 소켓 만들기 */
                     con.setRequestMethod("GET");
-//                    setHeader(to);
-//                    con.setDoOutput(true);
                     con.setDoInput(true);
                     /* http 소켓 만들기 */
 
-                    /* 서버에 보내기 */
-//                    DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-//                    dos.writeBytes(json);
-//                    dos.flush();
-                    /* 서버에 보내기 */
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                //usage example
-//                if (url.contains("blah blah")) {
-//                    try {
-//                        httpURLConnection.setDoInput(true);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                } else {
-//                    result = null;
-//                }
+
                 break;
             case TYPE_POST:
                 try {
@@ -150,25 +133,26 @@ public class ConnectionClass {
                     /* http 소켓 만들기 */
 
                     /* 서버에 보내기 */
-                    DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-                    dos.writeBytes(json);
-                    dos.flush();
+                    OutputStream os = con.getOutputStream();
+                    os.write(json.getBytes(StandardCharsets.UTF_8));
+                    os.flush();
                     /* 서버에 보내기 */
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             default:
-
         }
 
         /* 결과값 받기 */
         switch (conType) {
             case TYPE_POST:
                 try {
-                    resultCode = con.getResponseCode();
-                    result = con.getResponseMessage();
-                    Log.e("RESULT", resultCode+"");
+                    Log.e("RESULT", con.getResponseMessage()+", " +con.getResponseCode());
+                    if(addurl == Constant.SIGNUP && con.getResponseCode() == 500){
+                        con.disconnect();
+                        return new JSONObject().put("code", 500);
+                    }
                     is = con.getInputStream();
                     result = convertInputStreamToString(is);
                 } catch (Exception e) {
@@ -190,7 +174,6 @@ public class ConnectionClass {
                     e.printStackTrace();
                 }
                 break;
-
         }
 
         /* 결과값 받기 */
@@ -198,15 +181,11 @@ public class ConnectionClass {
         con.disconnect();     // 서버 연결 해제
         try {
             returnJson = new JSONObject(result);
+            returnJson.put("code", con.getResponseCode());
         } catch (Exception e){
             e.printStackTrace();
         }
-//        try {
-//            returnJson.put("resultCode", resultCode);
-//            returnJson.put("result", result);
-//        } catch (JSONException e){
-//            e.printStackTrace();
-//        }
+
         return returnJson;
     }
 

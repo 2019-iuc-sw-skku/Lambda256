@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:layout_height="400dp">
+    android:layout_height="400dp"
+    android:background="@color/White">
 
     <Space
         android:layout_width="match_parent"
