@@ -17,7 +17,7 @@
         android:id="@+id/textView47"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:text="기프티콘"
         android:textColor="@color/Black"
         android:textSize="24sp"

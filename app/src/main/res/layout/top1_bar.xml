@@ -15,7 +15,7 @@
             android:id="@+id/homebutton"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/home" />
 
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="text"
             android:textColor="@color/FloralWhite"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:typeface="sans"
             app:fontFamily="@font/noto_sans" />
 
@@ -37,7 +37,7 @@
             android:id="@+id/bell"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/bell" />
 

@@ -19,24 +19,24 @@
 
         <ImageView
             android:id="@+id/cutlery"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
             android:layout_margin="20dp"
             app:srcCompat="@drawable/cutlery" />
 
         <ImageView
             android:id="@+id/coffee_cup"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
             android:layout_margin="20dp"
             app:srcCompat="@drawable/coffee_cup" />
 
         <ImageView
             android:id="@+id/chef_hat"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
             android:layout_margin="20dp"
             app:srcCompat="@drawable/chef_hat" />
@@ -76,7 +76,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/my_listview"
+        android:id="@+id/gift_listview"
         android:layout_width="match_parent"
         android:layout_height="437dp" />
 

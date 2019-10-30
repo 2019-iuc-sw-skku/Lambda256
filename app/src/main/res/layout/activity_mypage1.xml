@@ -48,17 +48,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10dp"
                     android:text="윤김박"
                     android:textColor="@color/Black"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     app:fontFamily="@font/noto_sans" />
 
                 <TextView
                     android:id="@+id/textView19"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="20dp"
                     android:text="0xabcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJK"
                     android:textSize="11sp"
                     app:fontFamily="@font/noto_sans" />
@@ -68,12 +68,9 @@
                 android:id="@+id/editbutton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
-                android:background="#00FF0000"
                 android:layout_weight="2"
+                android:background="#00FF0000"
+                android:gravity="top|left"
                 android:text="프로필 편집"
                 android:textColor="#023060" />
 
@@ -98,13 +95,11 @@
             android:id="@+id/textView21"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
             android:layout_weight="2"
+            android:gravity="center"
             android:text="보유중"
             android:textColor="@color/Black"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:fontFamily="@font/noto_sans" />
 
         <Space
@@ -123,7 +118,8 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="bottom|center"
                 android:text="스코인"
                 android:textSize="18sp"
                 app:fontFamily="@font/noto_sans" />
@@ -133,7 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:text="6,700"
                 android:textColor="@color/Black"
                 android:textSize="20sp"
@@ -155,7 +151,8 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="bottom|center"
                 android:text="기프티콘"
                 android:textSize="18sp"
                 app:fontFamily="@font/noto_sans" />
@@ -165,7 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:text="2"
                 android:textColor="@color/Black"
                 android:textSize="20sp"

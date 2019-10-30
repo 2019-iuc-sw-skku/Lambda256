@@ -1,31 +1,23 @@
 package kr.co.softcampus.login.n_center;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.g_MainScreen;
-import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.i_send.i_sendfirst;
-import kr.co.softcampus.login.j_giftcon.j_giftmain;
-import kr.co.softcampus.login.k_infomain;
-import kr.co.softcampus.login.l_setting.l_alarm;
-import kr.co.softcampus.login.l_setting.l_exitpopup;
-import kr.co.softcampus.login.l_setting.l_logoutpopup;
-import kr.co.softcampus.login.l_setting.l_rule;
-import kr.co.softcampus.login.l_setting.l_settingfirst;
 
-public class n_centerfirst extends Activity {
+public class n_customer_center_first extends Activity {
 
-    ImageView homebutton;
-    ImageView bell;
-
+    ImageView imageView_logo;
 
     ImageView folder3;
     ImageView folder4;
@@ -43,41 +35,14 @@ public class n_centerfirst extends Activity {
     ImageButton Purchase;
     ImageButton Inform;
 
-    View bot;
-    View top;
-    TextView screentext;
-
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_centerfirst);
+        setContentView(R.layout.info_customer_center_first);
 
+        imageView_logo = findViewById(R.id.imageView17);
+        imageView_logo.setImageResource(R.drawable.logo2);
 
-        bot = findViewById(R.id.centerbot);
-        top=findViewById(R.id.centertop1);
-
-        screentext=top.findViewById(R.id.screentext);
-        screentext.setText("고객센터");
-
-
-        homebutton=top.findViewById(R.id.homebutton);
-        homebutton.setImageResource(R.drawable.home);
-
-        bell = top.findViewById(R.id.bell);
-        bell.setImageResource(R.drawable.bell);
-
-
-        Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
-
-        Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
-
-        Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
-
-        Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
 
         folder3=findViewById(R.id.folder3);
         folder3.setImageResource(R.drawable.folder_12);
@@ -94,27 +59,11 @@ public class n_centerfirst extends Activity {
         email=findViewById(R.id.email);
 
 
-        homebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, g_MainScreen.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-
-        bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent intent = new Intent(n_centerfirst.this, h_mypage1.class);
-                //startActivityForResult(intent, 1);
-            }
-        });
-
         personinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent1=new Intent(n_centerfirst.this, n_personinfo.class);
+                Intent intent1=new Intent(n_customer_center_first.this, n_personinfo.class);
                 startActivityForResult(intent1, 1);
             }
         }); //회원정보 수정
@@ -122,14 +71,14 @@ public class n_centerfirst extends Activity {
         skkoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1=new Intent(n_centerfirst.this, n_skkoin.class);
+                Intent intent1=new Intent(n_customer_center_first.this, n_skkoin.class);
                 startActivityForResult(intent1, 1);
             }
         }); //회원정보 수정
         giftcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, n_giftcon.class);
+                Intent intent = new Intent(n_customer_center_first.this, n_giftcon.class);
                 startActivityForResult(intent, 1);
             }
         });
@@ -137,7 +86,7 @@ public class n_centerfirst extends Activity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, n_send.class);
+                Intent intent = new Intent(n_customer_center_first.this, n_send.class);
                 startActivityForResult(intent, 1);
             }
         });
@@ -164,10 +113,18 @@ public class n_centerfirst extends Activity {
         });
 
 
+        /*
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, h_mypage1.class);
+
+                // 로딩중 팝업
+                CheckTypesTask task = new CheckTypesTask();
+                task.execute();
+
+                finish();
+
+                Intent intent = new Intent(n_customer_center_first.this, h_mypage1.class);
                 startActivityForResult(intent, 1);
             }
         });
@@ -175,7 +132,9 @@ public class n_centerfirst extends Activity {
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, i_sendfirst.class);
+
+                finish();
+                Intent intent = new Intent(n_customer_center_first.this, i_sendfirst.class);
                 startActivityForResult(intent, 1);
             }
         });
@@ -183,7 +142,9 @@ public class n_centerfirst extends Activity {
         Purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, j_giftmain.class);
+
+                finish();
+                Intent intent = new Intent(n_customer_center_first.this, j_giftmain.class);
                 startActivityForResult(intent, 1);
             }
         });
@@ -191,11 +152,68 @@ public class n_centerfirst extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(n_centerfirst.this, k_infomain.class);
+
+                // 로딩중 팝업
+                CheckTypesTask task = new CheckTypesTask();
+                task.execute();
+
+                finish();
+                Intent intent = new Intent(n_customer_center_first.this, k_infomain.class);
                 startActivityForResult(intent, 1);
             }
         });
 
+         */
+
+
+
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0); // 액티비티 종료 시 애니메이션 제거
+
+    }
+
+    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog asyncDialog = new ProgressDialog(
+                getApplicationContext());
+
+        @Override
+        protected void onPreExecute() {
+            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            asyncDialog.setMessage("로딩중입니다..");
+
+            // show dialog
+            asyncDialog.show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            try {
+                Thread.sleep(100);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            asyncDialog.dismiss();
+
+            finish();
+            Toast.makeText(getApplicationContext(), "로딩 완료", Toast.LENGTH_SHORT).show();
+            super.onPostExecute(result);
+        }
+    }
+
+
+
 
 }

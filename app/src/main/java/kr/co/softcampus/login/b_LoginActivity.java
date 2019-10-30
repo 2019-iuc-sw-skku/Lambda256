@@ -2,6 +2,7 @@ package kr.co.softcampus.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -39,7 +40,7 @@ public class b_LoginActivity extends AppCompatActivity {
     EditText etEmail;
     EditText etPw;
     CheckBox loginState;
-    Button Login;
+    Button Login_Button;
     Button SPW;
     Button REGISTER;
 
@@ -60,7 +61,7 @@ public class b_LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.address_recommender);
         etPw = findViewById(R.id.etPw);
         loginState = findViewById(R.id.loginState);
-        Login = findViewById(R.id.Login);
+        Login_Button = findViewById(R.id.Login);
         SPW = findViewById(R.id.SPW);
         REGISTER = findViewById(R.id.REGISTER);
         return_state = c_RETURN_STATE.EMPTY;
@@ -73,9 +74,17 @@ public class b_LoginActivity extends AppCompatActivity {
         }
 
         //로그인 눌렀을 때
-        Login.setOnClickListener(new View.OnClickListener() {
+        Login_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                Toast.makeText(b_LoginActivity.this, "로그인 중 .", Toast.LENGTH_LONG).show();
+
+                Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
+                startActivity(intent2);
+
+                Toast.makeText(b_LoginActivity.this, "로그인 중 ..", Toast.LENGTH_LONG).show();
 
 
                 // 로그인 요청 (현재 private key 를 email+password로 하고 있음)
@@ -137,8 +146,10 @@ public class b_LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         Constant.EMAIL = etEmail.getText().toString();
-                        Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
-                        startActivity(intent2);
+
+                     //   Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
+                     //   startActivity(intent2);
+
                         save();
                         finish();
                         break;
@@ -147,7 +158,6 @@ public class b_LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
 
 
         //비밀번호 화면으로
@@ -188,4 +198,5 @@ public class b_LoginActivity extends AppCompatActivity {
         // apply, commit 을 안하면 변경된 내용이 저장되지 않음
         editor.apply();
     }
+
 }

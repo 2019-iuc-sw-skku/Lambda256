@@ -28,7 +28,7 @@
         <TextView
             android:id="@+id/textView48"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="6"
             android:gravity="center|left"
             android:text="스코인을 잘못 보냈어요"

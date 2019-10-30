@@ -1,8 +1,14 @@
 package kr.co.softcampus.login.l_setting;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,13 +16,20 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.IntentCompat;
+
 import kr.co.softcampus.login.R;
+import kr.co.softcampus.login.b_LoginActivity;
 
 public class l_logoutpopup extends Activity {
     Button on;
     Button off;
 
     ImageView imageView24;
+
+
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -33,8 +46,12 @@ public class l_logoutpopup extends Activity {
         off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(l_logoutpopup.this, l_settingfirst.class);
-                startActivityForResult(intent, 1);
+
+                finish();
+
+              //  Intent intent = new Intent(l_logoutpopup.this, l_settingfirst.class);
+             //   intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
+             //   startActivityForResult(intent, 1);
             }
         });
 
@@ -42,7 +59,14 @@ public class l_logoutpopup extends Activity {
             @Override
             public void onClick(View view) {
                 //로그아웃
-                finish();
+
+                finishAffinity();
+                Intent intent = new Intent(l_logoutpopup.this, b_LoginActivity.class);
+                startActivity(intent);
+                System.exit(0);
+
+
+
             }
         });
     }

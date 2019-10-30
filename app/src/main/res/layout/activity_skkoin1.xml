@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/textView48"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="6"
             android:gravity="center|left"
             android:text="스코인 입금이 안돼요"
@@ -37,8 +37,8 @@
 
     <TextView
         android:id="@+id/textView46"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"

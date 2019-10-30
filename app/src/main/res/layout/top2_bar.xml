@@ -13,9 +13,9 @@
 
         <ImageView
             android:id="@+id/homebutton"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/home" />
 
@@ -23,16 +23,16 @@
             android:id="@+id/logo"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="25dp"
             android:layout_weight="3"
             app:srcCompat="@drawable/logo" />
 
 
         <ImageView
             android:id="@+id/bell"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/bell" />
 

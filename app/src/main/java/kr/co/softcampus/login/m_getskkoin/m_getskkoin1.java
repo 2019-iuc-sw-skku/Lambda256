@@ -14,14 +14,13 @@ import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
-import kr.co.softcampus.login.k_infomain;
 
 public class m_getskkoin1 extends Activity {
     ImageView homebutton;
     ImageView bell;
 
-    Button Button11;
-    Button Button12;
+    Button getskkoin2_Button;
+    Button getskkoin3_Button;
 
     ImageButton Mybutton;
     ImageButton Send;
@@ -52,23 +51,23 @@ public class m_getskkoin1 extends Activity {
 
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
+        Mybutton.setImageResource(R.drawable.mypage);
 
         Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
+        Send.setImageResource(R.drawable.send);
 
         Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
+        Purchase.setImageResource(R.drawable.giftcon);
 
         Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
+        Inform.setImageResource(R.drawable.info);
 
-        Button11=findViewById(R.id.Button11);
-        Button12=findViewById(R.id.Button12);
+        getskkoin2_Button =findViewById(R.id.Button11);
+        getskkoin3_Button =findViewById(R.id.Button12);
 
 
 
-        Button11.setOnClickListener(new View.OnClickListener() {
+        getskkoin2_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(m_getskkoin1.this, m_getskkoin2.class);
@@ -76,7 +75,7 @@ public class m_getskkoin1 extends Activity {
             }
         });
 
-        Button12.setOnClickListener(new View.OnClickListener() {
+        getskkoin3_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(m_getskkoin1.this, m_getskkoin3.class);
@@ -87,6 +86,9 @@ public class m_getskkoin1 extends Activity {
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
+                finish();
+
                 Intent intent = new Intent(m_getskkoin1.this, g_MainScreen.class);
                 startActivityForResult(intent, 1);
             }
@@ -103,7 +105,12 @@ public class m_getskkoin1 extends Activity {
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+                finish();
+
                 Intent intent = new Intent(m_getskkoin1.this, h_mypage1.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -111,7 +118,12 @@ public class m_getskkoin1 extends Activity {
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+                finish();
+
                 Intent intent = new Intent(m_getskkoin1.this, i_sendfirst.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -119,7 +131,12 @@ public class m_getskkoin1 extends Activity {
         Purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+                finish();
+
                 Intent intent = new Intent(m_getskkoin1.this, j_giftmain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -127,11 +144,37 @@ public class m_getskkoin1 extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(m_getskkoin1.this, k_infomain.class);
+
+                finish();// 현재 activity 종료
+                finish();
+
+                Intent intent = new Intent(m_getskkoin1.this, j_giftmain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
+
             }
         });
 
+
+
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();// 현재 activity 종료
+
+    //    Intent intent = new Intent(m_getskkoin1.this, k_infomain.class);
+     //   intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
+     //   startActivityForResult(intent, 1);
+
+    }
 }

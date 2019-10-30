@@ -1,24 +1,25 @@
 package kr.co.softcampus.login.l_setting;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import kr.co.softcampus.login.R;
-import kr.co.softcampus.login.f_Recommend.f_SearchRecom;
 import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.h_mypage.h_mypage2;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
-import kr.co.softcampus.login.m_getskkoin.m_getskkoin1;
-import kr.co.softcampus.login.n_center.n_centerfirst;
 
 public class l_settingfirst extends Activity {
     ImageView homebutton;
@@ -31,7 +32,7 @@ public class l_settingfirst extends Activity {
     Button alarm1;
     Button rule1;
     Button logout1;
-    Button exit1;
+    Button exit;
 
     ImageButton Mybutton;
     ImageButton Send;
@@ -63,16 +64,16 @@ public class l_settingfirst extends Activity {
 
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
+        Mybutton.setImageResource(R.drawable.mypage);
 
         Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
+        Send.setImageResource(R.drawable.send);
 
         Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
+        Purchase.setImageResource(R.drawable.giftcon);
 
         Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
+        Inform.setImageResource(R.drawable.info);
 
         folder1=findViewById(R.id.folder1);
         folder1.setImageResource(R.drawable.folder_12);
@@ -84,13 +85,17 @@ public class l_settingfirst extends Activity {
         alarm1=findViewById(R.id.alarm1);
         rule1=findViewById(R.id.rule1);
         logout1=findViewById(R.id.logout1);
-        exit1=findViewById(R.id.exit1);
+        exit =findViewById(R.id.exit1);
 
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
+
                 Intent intent = new Intent(l_settingfirst.this, g_MainScreen.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -107,8 +112,11 @@ public class l_settingfirst extends Activity {
             @Override
             public void onClick(View view) {
 
-                Intent intent1=new Intent(l_settingfirst.this, l_alarm.class);
-                startActivityForResult(intent1, 1);
+                finish();
+
+                Intent intent=new Intent(l_settingfirst.this, l_alarm.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
+                startActivityForResult(intent, 1);
             }
         }); //회원정보 수정
 
@@ -116,7 +124,11 @@ public class l_settingfirst extends Activity {
         rule1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+       //         finish();
+
                 Intent intent = new Intent(l_settingfirst.this, l_rule.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -124,15 +136,19 @@ public class l_settingfirst extends Activity {
         logout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(l_settingfirst.this, l_logoutpopup.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
 
-        exit1.setOnClickListener(new View.OnClickListener() {
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(l_settingfirst.this, l_exitpopup.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -141,7 +157,16 @@ public class l_settingfirst extends Activity {
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // 로딩중 팝업
+                CheckTypesTask task = new CheckTypesTask();
+                task.execute();
+
+                finish();
+                finish();
+
                 Intent intent = new Intent(l_settingfirst.this, h_mypage1.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -149,7 +174,12 @@ public class l_settingfirst extends Activity {
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
+                finish();
+
                 Intent intent = new Intent(l_settingfirst.this, i_sendfirst.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -157,7 +187,12 @@ public class l_settingfirst extends Activity {
         Purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
+                finish();
+
                 Intent intent = new Intent(l_settingfirst.this, j_giftmain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -165,11 +200,69 @@ public class l_settingfirst extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(l_settingfirst.this, k_infomain.class);
-                startActivityForResult(intent, 1);
+
+
+                finish();
+
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
+
+     //   Intent intent = new Intent(l_settingfirst.this, k_infomain.class);
+     //   intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
+     //   startActivityForResult(intent, 1);
+
+    }
+
+    // 액티비티 종료시 애니메이션  제거
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0);
+
+    }
+
+    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog asyncDialog = new ProgressDialog(
+                l_settingfirst.this);
+
+        @Override
+        protected void onPreExecute() {
+            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            asyncDialog.setMessage("로딩중입니다..");
+
+            // show dialog
+            asyncDialog.show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            try {
+                Thread.sleep(100);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            asyncDialog.dismiss();
+
+            finish();
+            Toast.makeText(l_settingfirst.this, "로딩 완료", Toast.LENGTH_SHORT).show();
+            super.onPostExecute(result);
+        }
     }
 
 }

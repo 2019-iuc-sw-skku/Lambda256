@@ -27,45 +27,16 @@ public class n_skkoin extends Activity {
     ImageButton Purchase;
     ImageButton Inform;
 
-    View bot;
-    View top;
-    TextView screentext;
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personinfo);
 
-
-        bot = findViewById(R.id.personinfobot);
-        top=findViewById(R.id.personinfotop1);
-
-        screentext=top.findViewById(R.id.screentext);
-        screentext.setText("스코인");
-
         textView48=findViewById(R.id.textView48);
 
         imageView25=findViewById(R.id.imageView25);
         imageView25.setImageResource(R.drawable.q);
-
-        homebutton=top.findViewById(R.id.homebutton);
-        homebutton.setImageResource(R.drawable.home);
-
-        bell = top.findViewById(R.id.bell);
-        bell.setImageResource(R.drawable.bell);
-
-
-        Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
-
-        Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
-
-        Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
-
-        Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
 
 
 
@@ -126,4 +97,13 @@ public class n_skkoin extends Activity {
         });
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0); // 액티비티 종료 시 애니메이션 제거
+
+    }
+
 }

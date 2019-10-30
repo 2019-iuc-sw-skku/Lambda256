@@ -3,7 +3,9 @@ package kr.co.softcampus.login.l_setting;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -27,22 +29,25 @@ public class l_alarm extends Activity {
     ImageButton Purchase;
     ImageButton Inform;
 
-    View bot;
+  //  View bot;
     View top;
     TextView screentext;
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        //타이틀바 없애기
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_alarm);
 
-        bot = findViewById(R.id.alarmBot);
-        top=findViewById(R.id.alarmtop1);
-
-        screentext=top.findViewById(R.id.screentext);
-        screentext.setText("알람");
 
 
+//        screentext=top.findViewById(R.id.screentext);
+//        screentext.setText("알람");
+
+/*
         homebutton=top.findViewById(R.id.homebutton);
         homebutton.setImageResource(R.drawable.home);
 
@@ -61,13 +66,17 @@ public class l_alarm extends Activity {
 
         Inform=bot.findViewById(R.id.Inform2);
         Inform.setImageResource(R.drawable.picture4);
-
+*/
         onoffswitch=findViewById(R.id.onoffswitch);
-
+/*
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
+
                 Intent intent = new Intent(l_alarm.this, g_MainScreen.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -75,26 +84,31 @@ public class l_alarm extends Activity {
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(l_alarm.this, h_mypage1.class);
-                startActivityForResult(intent, 1);
+            //    Intent intent = new Intent(l_alarm.this, h_mypage1.class);
+              //  startActivityForResult(intent, 1);
             }
         });
-
+*/
         onoffswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onoffswitch.isChecked()) {
                     Intent intent1 = new Intent(l_alarm.this, l_alarmpopup.class);
+                    intent1.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                     startActivityForResult(intent1, 1);
                 }
             }
         });
 
-
+/*
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
+
                 Intent intent = new Intent(l_alarm.this, h_mypage1.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -102,7 +116,10 @@ public class l_alarm extends Activity {
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
                 Intent intent = new Intent(l_alarm.this, i_sendfirst.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -110,7 +127,9 @@ public class l_alarm extends Activity {
         Purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 Intent intent = new Intent(l_alarm.this, j_giftmain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -118,12 +137,39 @@ public class l_alarm extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 Intent intent = new Intent(l_alarm.this, k_infomain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
 
+*/
+
     }
 
+    public boolean onTouchEvent(MotionEvent event){
+        return event.getAction() != MotionEvent.ACTION_OUTSIDE;
+    }
 
+    @Override
+    public void onBackPressed() {
+
+        finish();
+
+        Intent intent = new Intent(l_alarm.this, l_settingfirst.class);
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
+        startActivityForResult(intent, 1);
+
+
+    }
+
+    // 액티비티 종료시 애니메이션  제거
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0);
+
+    }
 }

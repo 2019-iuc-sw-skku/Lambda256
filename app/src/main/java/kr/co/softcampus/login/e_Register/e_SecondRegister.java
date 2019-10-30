@@ -46,6 +46,7 @@ public class e_SecondRegister extends Activity {
                 nickname = nick.getText().toString();
                 password = pw.getText().toString();
 
+                // 지갑 주소를 받아오는 부분
                 AsyncTask<String, Void, JSONObject> asyncTask = new AsyncTask<String, Void, JSONObject>() {
                     @Override
                     protected JSONObject doInBackground(String... strings) {
@@ -60,6 +61,7 @@ public class e_SecondRegister extends Activity {
                     }
                 };
 
+                // 회원 정보 등록하는 코드
                 AsyncTask<String, Void, Integer> asyncTask1 = new AsyncTask<String, Void, Integer>() {
                     @Override
                     protected Integer doInBackground(String... strings) {

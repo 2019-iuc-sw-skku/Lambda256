@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-    android:id="@+id/personinfotop1"
-    layout="@layout/top1_bar"
-    android:layout_width="match_parent"
-    android:layout_height="74dp"
-    />
+    <ImageView
+        android:id="@+id/imageview_logo"
+        android:layout_width="match_parent"
+        android:layout_height="119dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/logo2" />
 
     <TextView
         android:id="@+id/textView47"
@@ -50,10 +51,4 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <include
-        android:id="@+id/personinfobot"
-        layout="@layout/bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:layout_weight="0" />
 </LinearLayout>

@@ -21,6 +21,8 @@ import kr.co.softcampus.login.Connection.ConnectionClass;
 import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
+import kr.co.softcampus.login.b_LoginActivity;
+import kr.co.softcampus.login.k_infomain;
 
 public class f_SearchRecom extends Activity {
 
@@ -66,6 +68,8 @@ public class f_SearchRecom extends Activity {
                     ->   flag = true;
 
                  */
+
+                // 추천인 코드 등록 코드 - 수정 필요
                 AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
                     @Override
                     protected Boolean doInBackground(String... strings) {
@@ -93,9 +97,10 @@ public class f_SearchRecom extends Activity {
 
                     Toast.makeText(f_SearchRecom.this, "추천인에게 코인이 지급되었습니다.", Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(f_SearchRecom.this, kr.co.softcampus.login.e_Register.e_EndRegister.class);
+                    Intent intent = new Intent(f_SearchRecom.this, f_recomtruepopup.class);
                     startActivityForResult(intent, 1);
-                    finish(); // 이전 화면으로 돌아감
+                    finish();
+                    finish();// 이전 화면으로 돌아감
 
                 } else {
 
@@ -147,10 +152,34 @@ public class f_SearchRecom extends Activity {
      */
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
-        Toast.makeText(this, "추천인을 입력하지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-        
+        AlertDialog.Builder dialog = new AlertDialog.Builder(f_SearchRecom.this);
+        dialog.setTitle("추천인을 입력하지 않으시겠습니까?")
+                .setMessage("추천인 입력은 회원가입시 1회만 가능합니다.")
+
+                .setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        finish(); // 현재 액티비티 종료
+
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).create().show();
+
+    }
+
+    // 액티비티 종료시 애니메이션  제거
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0);
 
     }
 

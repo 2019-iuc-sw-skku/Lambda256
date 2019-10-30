@@ -79,7 +79,7 @@
         <activity android:name=".k_infomain"/>
 
         <activity android:name=".l_setting.l_settingfirst"/>
-        <activity android:name=".l_setting.l_alarm"/>
+        <activity android:name=".l_setting.l_alarm" />
         <activity android:name=".l_setting.l_alarmpopup"
             android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".l_setting.l_exitpopup"
@@ -94,7 +94,7 @@
         <activity android:name=".m_getskkoin.m_getskkoin2"/>
         <activity android:name=".m_getskkoin.m_getskkoin3"/>
 
-        <activity android:name=".n_center.n_centerfirst"/>
+        <activity android:name=".n_center.n_customer_center_first"/>
         <activity android:name=".n_center.n_giftcon"/>
         <activity android:name=".n_center.n_giftcon1"/>
         <activity android:name=".n_center.n_personinfo"/>

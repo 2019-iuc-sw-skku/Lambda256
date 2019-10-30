@@ -160,6 +160,7 @@ public class e_FirstRegister extends Activity {
                 } else {
                     Email_recheck_TextView.setText("");
 
+                    // 이메일 중복 체크
                     AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
                         @Override
                         protected Boolean doInBackground(String... strings) {

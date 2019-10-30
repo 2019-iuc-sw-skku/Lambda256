@@ -19,12 +19,9 @@
 
         <ImageView
             android:id="@+id/imageView12"
-            android:layout_width="288dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="20dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/picture5" />
 
@@ -41,7 +38,7 @@
                 android:layout_marginTop="20dp"
                 android:text="윤김박"
                 android:textColor="@color/Black"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 app:fontFamily="@font/noto_sans" />
 
             <Button
@@ -58,11 +55,11 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="2dp"
         android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="#3E000000" />
+        android:background="#77D6D7D7" />
 
     <LinearLayout
         android:layout_width="match_parent"

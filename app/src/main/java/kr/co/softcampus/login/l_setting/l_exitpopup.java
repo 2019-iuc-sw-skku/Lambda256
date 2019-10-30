@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import kr.co.softcampus.login.R;
+import kr.co.softcampus.login.b_LoginActivity;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 
@@ -35,16 +37,25 @@ public class l_exitpopup extends Activity {
         off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(l_exitpopup.this, l_settingfirst.class);
-                startActivityForResult(intent, 1);
+                finish();
+
+               // Intent intent = new Intent(l_exitpopup.this, l_settingfirst.class);
+              //  intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
+              //  startActivityForResult(intent, 1);
             }
         });
 
         on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //회원 탈퇴
-                finish();
+                //회원 탈퇴 ( 로그인 화면으로 돌아감 )
+
+                finishAffinity();
+                Intent intent = new Intent(l_exitpopup.this, b_LoginActivity.class);
+                startActivity(intent);
+                System.exit(0);
+
+                Toast.makeText(l_exitpopup.this, "회원 탈퇴가 완료되었습니다.", Toast.LENGTH_LONG).show();
             }
         });
     }

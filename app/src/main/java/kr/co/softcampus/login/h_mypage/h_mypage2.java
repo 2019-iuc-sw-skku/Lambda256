@@ -1,6 +1,8 @@
 package kr.co.softcampus.login.h_mypage;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -62,16 +65,17 @@ public class h_mypage2 extends Activity {
         imageView11.setImageResource(R.drawable.picture5);
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
+        Mybutton.setImageResource(R.drawable.mypage);
 
         Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
+        Send.setImageResource(R.drawable.send);
 
         Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
+        Purchase.setImageResource(R.drawable.giftcon);
 
         Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
+        Inform.setImageResource(R.drawable.info);
+
 
         imageView18.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +89,15 @@ public class h_mypage2 extends Activity {
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();
+                finish();
+
                 Intent intent = new Intent(h_mypage2.this, g_MainScreen.class);
                 startActivityForResult(intent, 1);
+
+
+
             }
         });
 
@@ -101,7 +112,11 @@ public class h_mypage2 extends Activity {
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+
                 Intent intent = new Intent(h_mypage2.this, h_mypage1.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -109,7 +124,11 @@ public class h_mypage2 extends Activity {
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+
                 Intent intent = new Intent(h_mypage2.this, i_sendfirst.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -117,7 +136,11 @@ public class h_mypage2 extends Activity {
         Purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+
                 Intent intent = new Intent(h_mypage2.this, j_giftmain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -125,10 +148,51 @@ public class h_mypage2 extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+
                 Intent intent = new Intent(h_mypage2.this, k_infomain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("이전 화면으로 돌아가시겠습니까?").setMessage("");
+
+        builder.setPositiveButton("예", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+                finish();// 현재 activity 종료
+
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0);
+
+    }
+
 }

@@ -1,6 +1,9 @@
 package kr.co.softcampus.login.h_mypage;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -22,6 +26,7 @@ import kr.co.softcampus.login.Connection.ConnectionClass;
 import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
+import kr.co.softcampus.login.b_LoginActivity;
 import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
@@ -69,20 +74,21 @@ public class h_mypage1 extends Activity {
 
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
+        Mybutton.setImageResource(R.drawable.mypage);
 
         Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
+        Send.setImageResource(R.drawable.send);
 
         Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
+        Purchase.setImageResource(R.drawable.giftcon);
 
         Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
+        Inform.setImageResource(R.drawable.info);
 
         walletAddress = findViewById(R.id.textView19);
         token = findViewById(R.id.textView29);
 
+        // 현재 잔고 가져오는 코드
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
@@ -97,6 +103,7 @@ public class h_mypage1 extends Activity {
             }
         };
 
+        // 닉네임 가져오는 코드
         AsyncTask<String, Void, String> nickAsycnTask = new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
@@ -141,6 +148,13 @@ public class h_mypage1 extends Activity {
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // 로딩중 팝업
+                CheckTypesTask task = new CheckTypesTask();
+                task.execute();
+
+                finish();// 현재 activity 종료
+
                 Intent intent=new Intent(h_mypage1.this, g_MainScreen.class);
                 startActivityForResult(intent, 1);
             }
@@ -154,10 +168,13 @@ public class h_mypage1 extends Activity {
             }
         }); //알람 기능 구현
 
+        // 프로필 수정 activity
         editbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(h_mypage1.this, h_mypage2.class);
+
                 startActivityForResult(intent, 1);
             }
         });
@@ -165,7 +182,15 @@ public class h_mypage1 extends Activity {
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // 로딩중 팝업
+                CheckTypesTask task = new CheckTypesTask();
+                task.execute();
+
+                finish();// 현재 activity 종료
+
                 Intent intent=new Intent(h_mypage1.this, h_mypage1.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -173,7 +198,11 @@ public class h_mypage1 extends Activity {
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+
                 Intent intent=new Intent(h_mypage1.this, i_sendfirst.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -181,7 +210,11 @@ public class h_mypage1 extends Activity {
         Purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                finish();// 현재 activity 종료
+
                 Intent intent=new Intent(h_mypage1.this, j_giftmain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
@@ -189,9 +222,95 @@ public class h_mypage1 extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // 로딩중 팝업
+                CheckTypesTask task = new CheckTypesTask();
+                task.execute();
+
+                finish();// 현재 activity 종료
+
                 Intent intent=new Intent(h_mypage1.this, k_infomain.class);
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0, 0);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("로그아웃 하시겠습니까?").setMessage("");
+
+        builder.setPositiveButton("로그아웃", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                Toast.makeText(getApplicationContext(), "로그아웃 되었습니다", Toast.LENGTH_SHORT).show();
+                finishAffinity();
+                Intent intent = new Intent( h_mypage1.this, b_LoginActivity.class);
+                startActivity(intent);
+                System.exit(0);
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                Toast.makeText(getApplicationContext(), "취소", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog asyncDialog = new ProgressDialog(
+                h_mypage1.this);
+
+        @Override
+        protected void onPreExecute() {
+            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            asyncDialog.setMessage("로딩중입니다..");
+
+            // show dialog
+            asyncDialog.show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            try {
+                Thread.sleep(100);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            asyncDialog.dismiss();
+
+            finish();
+            Toast.makeText(h_mypage1.this, "로딩 완료", Toast.LENGTH_SHORT).show();
+            super.onPostExecute(result);
+        }
+    }
+
+
+
 }

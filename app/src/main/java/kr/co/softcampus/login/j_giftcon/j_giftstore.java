@@ -46,17 +46,16 @@ public class j_giftstore extends Activity {
 
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.picture1);
+        Mybutton.setImageResource(R.drawable.mypage);
 
         Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.picture2);
+        Send.setImageResource(R.drawable.send);
 
         Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.picture3);
+        Purchase.setImageResource(R.drawable.giftcon);
 
         Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.picture4);
-
+        Inform.setImageResource(R.drawable.info);
 
 
         homebutton.setOnClickListener(new View.OnClickListener() {
