@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -71,14 +72,7 @@ public class j_giftmain extends Activity {
             protected JSONObject doInBackground(String... strings) {
                 ConnectionClass cc = new ConnectionClass();
                 JSONObject result;
-                try {
-                    result = cc.MyConnection(Server.SERVER, Constant.GIFTLIST, ConType.TYPE_POST,
-                            new JSONObject().put("token", Constant.getSERVERAPIKEY()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-
+                result = cc.MyConnection(Server.SERVER, Constant.GIFTLIST, ConType.TYPE_POST, new JSONObject());
                 return result;
             }
         };
@@ -90,13 +84,14 @@ public class j_giftmain extends Activity {
 
         try {
             result = asyncTask.get(10, TimeUnit.SECONDS);
+            Log.e("!!!!!!!!!!!!!!!!!!!!", result.toString());
             results = result.getJSONObject("data").getJSONArray("content");
             jalen = result.getJSONObject("data").getInt("length");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for(int i =0; i<jalen; i++){
+        for(int i =0; i<results.length(); i++){
             try {
                 JSONObject tmp = results.getJSONObject(i);
                 giftlists.add(new j_giftlist(tmp.getString("name"),
@@ -109,8 +104,7 @@ public class j_giftmain extends Activity {
             }
         }
 
-        ArrayAdapter<j_giftlist> arrayAdapter = new ArrayAdapter<j_giftlist>(getApplicationContext(), R.layout.item_gifticon, giftlists);
-        gift_listview.setAdapter(arrayAdapter);
+        gift_listview.setAdapter(new gifticonAdapter(getApplicationContext(), R.layout.item_gifticon, giftlists));
 
         bot = findViewById(R.id.giftmainbot);
         top=findViewById(R.id.giftmaintop);

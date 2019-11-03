@@ -1,18 +1,18 @@
 package kr.co.softcampus.login.j_giftcon;
 
-import android.widget.LinearLayout;
-
 public class j_giftlist {
-    private String name, category1, catergory2;
+    private String name, category1, category2;
     private int cost, count;
 
-    public j_giftlist(String name, String category1, String catergory2, int cost, int count) {
+    public j_giftlist(String name, String category1, String category2, int cost, int count) {
         this.name = name;
         this.category1 = category1;
-        this.catergory2 = catergory2;
+        this.category2 = category2;
         this.cost = cost;
         this.count = count;
     }
+
+
 
     public String getName() {
         return name;
@@ -30,12 +30,12 @@ public class j_giftlist {
         this.category1 = category1;
     }
 
-    public String getCatergory2() {
-        return catergory2;
+    public String getCategory2() {
+        return category2;
     }
 
-    public void setCatergory2(String catergory2) {
-        this.catergory2 = catergory2;
+    public void setCategory2(String category2) {
+        this.category2 = category2;
     }
 
     public int getCost() {
