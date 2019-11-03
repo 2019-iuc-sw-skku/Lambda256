@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.icu.text.IDNA;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -50,6 +51,8 @@ public class g_MainScreen extends Activity {
 
     View bot;
     View top;
+
+    String nick;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -121,17 +124,22 @@ public class g_MainScreen extends Activity {
         asyncTask.execute();
         walletAddress.setText(Constant.WADDRESS);
         try {
-            token.setText(Double.toString(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/10000000000000000000.00));
+            token.setText(Double.toString(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT));
         } catch (Exception e) {
             token.setText("Connection Error");
         }
 
-        nickAsycnTask.execute();
-        try {
-            nickname.setText(nickAsycnTask.get(10, TimeUnit.SECONDS));
-        } catch (Exception e){
-            nickname.setText("Anonymous");
+        if(Constant.NICK.isEmpty()) {
+            nickAsycnTask.execute();
+            try {
+                Constant.NICK = nickAsycnTask.get(10, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                nick = "Anonymous";
+            }
         }
+        Log.e("???????NICK", Constant.NICK);
+        nickname.setText(Constant.NICK);
+
 
         walletAddress.setOnClickListener(new View.OnClickListener() {
             @Override

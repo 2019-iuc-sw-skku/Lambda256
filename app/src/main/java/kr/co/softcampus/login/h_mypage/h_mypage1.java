@@ -3,6 +3,9 @@ package kr.co.softcampus.login.h_mypage;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -33,6 +36,11 @@ import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
 
 public class h_mypage1 extends Activity {
+
+    Context mContext;
+
+    String nick;
+
     ImageView homebutton;
     ImageView bell;
 
@@ -54,6 +62,8 @@ public class h_mypage1 extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage1);
+
+        mContext = this;
 
         bot = findViewById(R.id.mypage1Bot);
         top = findViewById(R.id.mypage1top1);
@@ -121,29 +131,42 @@ public class h_mypage1 extends Activity {
         asyncTask.execute();
         walletAddress.setText(Constant.WADDRESS);
         try {
-            token.setText(asyncTask.get(10, TimeUnit.SECONDS));
+            token.setText(Double.toString(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT));
         } catch (Exception e){
             token.setText("Connection Error");
         }
 
-        nickAsycnTask.execute();
-        try {
-            nickname.setText(nickAsycnTask.get(10, TimeUnit.SECONDS));
-        } catch (Exception e){
-            nickname.setText("Anonymous");
+        if(Constant.NICK.equals("")) {
+            nickAsycnTask.execute();
+            try {
+                Constant.NICK = nickAsycnTask.get(10, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                nickname.setText("Anonymous");
+            }
         }
+        nickname.setText(Constant.NICK);
 
         editbutton=findViewById(R.id.editbutton);
 
         listView= findViewById(R.id.my_listview);
 
         list_itemArrayList=new ArrayList<list_item>();
-
+/*
         list_itemArrayList.add(new list_item(new Date(System.currentTimeMillis()),"이성균님에게 송금","-7000"));
         list_itemArrayList.add(new list_item(new Date(System.currentTimeMillis()),"교내 봉사","+10000"));
-
+*/
         listAdapter=new listAdapter(h_mypage1.this, list_itemArrayList);
         listView.setAdapter(listAdapter);
+
+        walletAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboardManager = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("WalletAddress", walletAddress.getText().toString());
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(mContext, "지갑주소가 복사되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override

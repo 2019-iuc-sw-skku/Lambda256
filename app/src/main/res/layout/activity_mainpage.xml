@@ -33,18 +33,29 @@
             android:textColor="@color/Black"
             android:textSize="36sp" />
 
-        <TextView
-            android:id="@+id/walletaddress"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
             android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="80dp"
-            android:gravity="center"
-            android:text="0xabcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKL"
-            android:textSize="20sp" />
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="주소" />
+            <TextView
+                android:id="@+id/walletaddress"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0xabcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKL"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"

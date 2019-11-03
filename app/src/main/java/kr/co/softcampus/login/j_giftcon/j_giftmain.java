@@ -7,9 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -71,46 +73,42 @@ public class j_giftmain extends Activity {
             protected JSONObject doInBackground(String... strings) {
                 ConnectionClass cc = new ConnectionClass();
                 JSONObject result;
-                try {
-                    result = cc.MyConnection(Server.SERVER, Constant.GIFTLIST, ConType.TYPE_POST,
-                            new JSONObject().put("token", Constant.getSERVERAPIKEY()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-
+                result = cc.MyConnection(Server.SERVER, Constant.GIFTLIST, ConType.TYPE_POST, new JSONObject());
                 return result;
             }
         };
 
-        asyncTask.execute();
-        JSONArray results = null;
-        JSONObject result = null;
-        int jalen = 0;
+        if(Constant.giftlists == null) {
+            asyncTask.execute();
+            JSONArray results = null;
+            JSONObject result = null;
+            int jalen = 0;
 
-        try {
-            result = asyncTask.get(10, TimeUnit.SECONDS);
-            results = result.getJSONObject("data").getJSONArray("content");
-            jalen = result.getJSONObject("data").getInt("length");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        for(int i =0; i<jalen; i++){
             try {
-                JSONObject tmp = results.getJSONObject(i);
-                giftlists.add(new j_giftlist(tmp.getString("name"),
-                        tmp.getString("category1"),
-                        tmp.getString("category2"),
-                        tmp.getInt("cost"),
-                        tmp.getInt("count")));
-            } catch (Exception e){
+                result = asyncTask.get(10, TimeUnit.SECONDS);
+                Log.e("!!!!!!!!!!!!!!!!!!!!", result.toString());
+                results = result.getJSONObject("data").getJSONArray("content");
+                jalen = result.getJSONObject("data").getInt("length");
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            for (int i = 0; i < results.length(); i++) {
+                try {
+                    JSONObject tmp = results.getJSONObject(i);
+                    giftlists.add(new j_giftlist(tmp.getString("name"),
+                            tmp.getString("category1"),
+                            tmp.getString("category2"),
+                            tmp.getInt("cost"),
+                            tmp.getInt("count")));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            Constant.giftlists = giftlists;
         }
 
-        ArrayAdapter<j_giftlist> arrayAdapter = new ArrayAdapter<j_giftlist>(getApplicationContext(), R.layout.item_gifticon, giftlists);
-        gift_listview.setAdapter(arrayAdapter);
+        gift_listview.setAdapter(new gifticonAdapter(getApplicationContext(), R.layout.item_gifticon, Constant.giftlists));
 
         bot = findViewById(R.id.giftmainbot);
         top=findViewById(R.id.giftmaintop);
@@ -146,7 +144,12 @@ public class j_giftmain extends Activity {
         Inform=bot.findViewById(R.id.Inform2);
         Inform.setImageResource(R.drawable.info);
 
-
+        gift_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                onPopup(view);
+            }
+        });
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,6 +232,26 @@ public class j_giftmain extends Activity {
 
     }
 
+
+    public void onPopup(View v){
+        Intent intent = new Intent(this, j_giftcheckpopup.class);
+        intent.putExtra("data", "Test Popup");
+        startActivityForResult(intent, 1);
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                //데이터 받기
+                String result = data.getStringExtra("result");
+            }
+        }
+    }
+
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -303,5 +326,7 @@ public class j_giftmain extends Activity {
             super.onPostExecute(result);
         }
     }
+
+
 
 }
