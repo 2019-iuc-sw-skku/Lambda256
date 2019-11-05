@@ -2,7 +2,6 @@ package kr.co.softcampus.login.e_Register;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -33,8 +32,8 @@ public class e_EndRegister extends Activity {
         setContentView(R.layout.activity_endregister);
 
         mContext = this;
-        button_recommender = findViewById(R.id.button_recommender);
-        button_login = findViewById(R.id.button_login);
+        button_recommender = findViewById(R.id.button_cancel);
+        button_login = findViewById(R.id.button_purchase);
         address = findViewById(R.id.textView8);
 
         flag_recom_button = true; // true 가 추천인을 아직 입력하지 않은 상태

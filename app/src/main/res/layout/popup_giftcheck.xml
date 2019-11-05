@@ -53,7 +53,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_recommender"
+            android:id="@+id/button_cancel"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="40dp"
@@ -63,7 +63,7 @@
             android:text="취소" />
 
         <Button
-            android:id="@+id/button_login"
+            android:id="@+id/button_purchase"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginRight="40dp"

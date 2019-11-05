@@ -10,7 +10,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,10 +20,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.softcampus.login.Connection.ConType;
@@ -128,8 +133,60 @@ public class h_mypage1 extends Activity {
             }
         };
 
+        // transaction 가져오는 코드
+        AsyncTask<String, Void, ArrayList<list_item>> historyTask = new AsyncTask<String, Void, ArrayList<list_item>>() {
+            @Override
+            protected ArrayList<list_item> doInBackground(String... strings) {
+                ConnectionClass cc = new ConnectionClass();
+                JSONObject result = cc.MyConnection(Server.LUNI, Constant.HISTORY, ConType.TYPE_GET, null);
+                ArrayList<list_item> list_items = new ArrayList<>();
+
+                try {
+                    JSONArray results = result.getJSONObject("data").getJSONObject("histories").getJSONArray("items");
+                    for(int i=0; i<results.length(); i++){
+                        try {
+                            JSONObject tmp = results.getJSONObject(i);
+                            if (tmp.getString("senderAddress").equals(Constant.WADDRESS) || tmp.getString("receiverAddress").equals(Constant.WADDRESS)) {
+                                Log.e("History", tmp.toString());
+                                list_items.add(new list_item(
+                                        tmp.getString("createdAt"),
+                                        " ",
+                                        tmp.getString("senderAddress"),
+                                        tmp.getString("receiverAddress"),
+                                        0.0,
+                                        tmp.getString("txStatus")));
+
+                            }
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                    return list_items;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                return null;
+                }
+            }
+        };
+
+
+        list_itemArrayList = null;
+        historyTask.execute();
+        try {
+            list_itemArrayList = historyTask.get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(!Constant.WADDRESS.isEmpty())
+            walletAddress.setText(Constant.WADDRESS);
+
+        /*
+         *  Revision Required
+         *  Check whether token transfer state is set and then execute
+         */
         asyncTask.execute();
-        walletAddress.setText(Constant.WADDRESS);
         try {
             token.setText(Double.toString(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT));
         } catch (Exception e){
@@ -150,7 +207,7 @@ public class h_mypage1 extends Activity {
 
         listView= findViewById(R.id.my_listview);
 
-        list_itemArrayList=new ArrayList<list_item>();
+
 /*
         list_itemArrayList.add(new list_item(new Date(System.currentTimeMillis()),"이성균님에게 송금","-7000"));
         list_itemArrayList.add(new list_item(new Date(System.currentTimeMillis()),"교내 봉사","+10000"));
@@ -158,6 +215,16 @@ public class h_mypage1 extends Activity {
         listAdapter=new listAdapter(h_mypage1.this, list_itemArrayList);
         listView.setAdapter(listAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String addr = list_itemArrayList.get(i).getTx().substring(0,41);
+                ClipboardManager clipboardManager = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("WalletAddress", addr);
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(mContext, "지갑주소가 복사되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
         walletAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

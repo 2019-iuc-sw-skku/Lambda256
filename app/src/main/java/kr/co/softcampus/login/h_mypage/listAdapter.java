@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.R;
 
 public class listAdapter extends BaseAdapter {
@@ -34,6 +35,7 @@ public class listAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
+
         return list_itemArrayList.get(position);
     }
 
@@ -54,10 +56,17 @@ public class listAdapter extends BaseAdapter {
 
         }
 
-        date1.setText(list_itemArrayList.get(position).getWrite_date().toString());
-        content1.setText(list_itemArrayList.get(position).getNote());
-        plus1.setText(list_itemArrayList.get(position).getGet());
+        date1.setText(list_itemArrayList.get(position).getWrite_date());
 
+        content1.setText(list_itemArrayList.get(position).getTx().substring(0,4) +
+                list_itemArrayList.get(position).getTx().substring(41));//list_itemArrayList.get(position).getNote());
+        plus1.setText(Double.toString(list_itemArrayList.get(position).getAmount()));
+
+        if(list_itemArrayList.get(position).getIsSucceed().equals("SUCCEED")){
+            plus1.setTextColor(context.getResources().getColor(R.color.DarkGreen));
+        } else{
+            plus1.setTextColor(context.getResources().getColor(R.color.Red));
+        }
         return convertView;
     }
 }

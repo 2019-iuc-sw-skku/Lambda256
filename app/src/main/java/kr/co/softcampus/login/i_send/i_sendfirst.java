@@ -87,51 +87,55 @@ public class i_sendfirst extends Activity {
         confirm_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                list.add(new sendlist_item(addr.getText().toString(), Double.parseDouble(amnt.getText().toString())));
-                AsyncTask<ArrayList<sendlist_item>, Void, JSONObject> asyncTask = new AsyncTask<ArrayList<sendlist_item>, Void, JSONObject>() {
-                    @Override
-                    protected JSONObject doInBackground(ArrayList<sendlist_item>... arrayLists) {
-                        ConnectionClass cc = new ConnectionClass();
-                        JSONObject result;
-                        try {
-                            result = cc.MyConnection(Server.LUNI, Constant.TOKENSEND, ConType.TYPE_POST,
-                                    new JSONObject().put("from", Constant.WADDRESS).put("inputs",
-                                            new JSONObject().put("receiverAddress", arrayLists[0].get(0).getAddress()).put("valueAmount", arrayLists[0].get(0).getToken())));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            return null;
+                if(!addr.getText().toString().isEmpty() && !amnt.getText().toString().isEmpty()) {
+                    list.add(new sendlist_item(addr.getText().toString(), Double.parseDouble(amnt.getText().toString())));
+                    AsyncTask<ArrayList<sendlist_item>, Void, JSONObject> asyncTask = new AsyncTask<ArrayList<sendlist_item>, Void, JSONObject>() {
+                        @Override
+                        protected JSONObject doInBackground(ArrayList<sendlist_item>... arrayLists) {
+                            ConnectionClass cc = new ConnectionClass();
+                            JSONObject result;
+                            try {
+                                result = cc.MyConnection(Server.LUNI, Constant.TOKENSEND, ConType.TYPE_POST,
+                                        new JSONObject().put("from", Constant.WADDRESS).put("inputs",
+                                                new JSONObject().put("receiverAddress", arrayLists[0].get(0).getAddress()).put("valueAmount", arrayLists[0].get(0).getToken() * Constant.TOKEN_UNIT)));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                return null;
+                            }
+
+                            return result;
                         }
+                    };
 
-                        return result;
+                    asyncTask.execute(list);
+                    Boolean results = false;
+                    JSONObject result = null;
+
+                    try {
+                        result = asyncTask.get(10, TimeUnit.SECONDS);
+                        results = result.getBoolean("result");
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                };
 
-                asyncTask.execute(list);
-                Boolean results = false;
-                JSONObject result = null;
+                    Log.e("!!!!!!!!!!!!!", result.toString());
+                    c_RETURN_STATE return_state;
+                    // 결과 - 이메일 혹은 비밀번호가 틀렸는지는 아직 체크하지 않음
+                    if (results) {
+                        Toast.makeText(i_sendfirst.this, "Success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(i_sendfirst.this, i_sendfinish.class);
+                        intent.putExtra("address", list.get(0).getAddress());
+                        intent.putExtra("amount", list.get(0).getToken());
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(i_sendfirst.this, "Fail", Toast.LENGTH_SHORT).show();
+                    }
 
-                try {
-                    result = asyncTask.get(10, TimeUnit.SECONDS);
-                    results = result.getBoolean("result");
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
-
-                Log.e("!!!!!!!!!!!!!", result.toString());
-                c_RETURN_STATE return_state;
-                // 결과 - 이메일 혹은 비밀번호가 틀렸는지는 아직 체크하지 않음
-                if (results) {
-                    Toast.makeText(i_sendfirst.this, "Success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(i_sendfirst.this, i_sendfinish.class);
-                    intent.putExtra("address", list.get(0).getAddress());
-                    intent.putExtra("amount", list.get(0).getToken());
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(i_sendfirst.this, "Fail", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(i_sendfirst.this, "주소와 송금 금액을 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 

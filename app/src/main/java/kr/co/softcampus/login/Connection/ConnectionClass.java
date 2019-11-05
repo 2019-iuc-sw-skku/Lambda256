@@ -182,6 +182,7 @@ public class ConnectionClass {
         try {
             returnJson = new JSONObject(result);
             returnJson.put("code", con.getResponseCode());
+            Log.e("RESULT REAL", result);
         } catch (Exception e){
             e.printStackTrace();
         }

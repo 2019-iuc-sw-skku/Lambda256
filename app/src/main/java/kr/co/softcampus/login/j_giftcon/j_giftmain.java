@@ -106,6 +106,8 @@ public class j_giftmain extends Activity {
                 }
             }
             Constant.giftlists = giftlists;
+        } else {
+            giftlists = Constant.giftlists;
         }
 
         gift_listview.setAdapter(new gifticonAdapter(getApplicationContext(), R.layout.item_gifticon, Constant.giftlists));
@@ -147,7 +149,7 @@ public class j_giftmain extends Activity {
         gift_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onPopup(view);
+                onPopup(view, i);
             }
         });
 
@@ -233,9 +235,13 @@ public class j_giftmain extends Activity {
     }
 
 
-    public void onPopup(View v){
+    public void onPopup(View v, int i){
         Intent intent = new Intent(this, j_giftcheckpopup.class);
-        intent.putExtra("data", "Test Popup");
+        j_giftlist tmp = giftlists.get(i);
+        intent.putExtra("name", tmp.getName());
+        intent.putExtra("c1", tmp.getCategory1());
+        intent.putExtra("c2", tmp.getCategory2());
+        intent.putExtra("cost", tmp.getCost());
         startActivityForResult(intent, 1);
     }
 
