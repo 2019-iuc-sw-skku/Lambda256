@@ -1,7 +1,7 @@
 package kr.co.softcampus.login.j_giftcon;
 
 import android.app.Activity;
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +24,8 @@ public class j_giftsuccesspopup extends Activity {
     }
 
     public void mOnClose(View v){
-        finish();
+        Intent intent=new Intent(j_giftsuccesspopup.this, j_giftmain.class);
+        startActivityForResult(intent, 0);
     }
 
     public boolean onTouchEvent(MotionEvent event){

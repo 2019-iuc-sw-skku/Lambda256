@@ -1,11 +1,11 @@
 package kr.co.softcampus.login.j_giftcon;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import kr.co.softcampus.login.R;
@@ -25,7 +25,8 @@ public class j_giftfailpopup extends Activity {
     }
 
     public void mOnClose(View v){
-        finish();
+        Intent intent=new Intent(j_giftfailpopup.this, j_giftmain.class);
+        startActivityForResult(intent, -1);
     }
 
     public boolean onTouchEvent(MotionEvent event){
