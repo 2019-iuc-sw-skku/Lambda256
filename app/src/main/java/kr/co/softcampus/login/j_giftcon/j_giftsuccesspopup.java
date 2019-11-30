@@ -19,7 +19,7 @@ public class j_giftsuccesspopup extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popup_giftsuccess);
 
-        imageView6=findViewById(R.id.imageView6);
+        imageView6=findViewById(R.id.errorImage);
         imageView6.setImageResource(R.drawable.success);
     }
 

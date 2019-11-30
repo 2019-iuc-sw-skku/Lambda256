@@ -20,7 +20,7 @@ public class j_giftfailpopup extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popup_giftfail);
 
-        imageView6=findViewById(R.id.imageView6);
+        imageView6=findViewById(R.id.errorImage);
         imageView6.setImageResource(R.drawable.error);
     }
 

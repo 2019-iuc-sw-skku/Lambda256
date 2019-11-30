@@ -44,7 +44,7 @@ public class j_giftcheckpopup extends Activity {
         button_cancel = findViewById(R.id.button_cancel);
         button_purchase = findViewById(R.id.button_purchase);
 
-        imageView6=findViewById(R.id.imageView6);
+        imageView6=findViewById(R.id.errorImage);
         imageView6.setImageResource(R.drawable.insert_coin);
 
         button_cancel.setOnClickListener(new View.OnClickListener() {
