@@ -60,8 +60,6 @@ public class f_SearchRecom extends Activity {
                 // 추천인 주소 입력받음
                 address = editText_address_recommender.getText().toString();
 
-
-
                 /*
                     성공적으로 추천인 코드를 입력받은 경우
                     ->   flag = true;
@@ -90,15 +88,12 @@ public class f_SearchRecom extends Activity {
                 }
 
 
-
-
-                if (flag == true) {
+                if (flag) {
 
                     Toast.makeText(f_SearchRecom.this, "추천인에게 코인이 지급되었습니다.", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(f_SearchRecom.this, f_recomtruepopup.class);
                     startActivityForResult(intent, 1);
-                    finish();
                     finish();// 이전 화면으로 돌아감
 
                 } else {
