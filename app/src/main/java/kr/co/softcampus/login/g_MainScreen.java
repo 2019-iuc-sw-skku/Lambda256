@@ -8,17 +8,13 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.text.IDNA;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.core.app.ActivityCompat;
 
 import org.json.JSONObject;
 
@@ -122,10 +118,15 @@ public class g_MainScreen extends Activity {
         };
 
         asyncTask.execute();
+        double curTokenDouble = 0;
+        long curToken = 0;
         walletAddress.setText(Constant.WADDRESS);
         try {
-            token.setText(Double.toString(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT));
+            curTokenDouble = Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT;
+            curToken = Math.round(curTokenDouble);
+            token.setText(Long.toString(curToken));
         } catch (Exception e) {
+            e.printStackTrace();
             token.setText("Connection Error");
         }
 
@@ -137,7 +138,6 @@ public class g_MainScreen extends Activity {
                 nick = "Anonymous";
             }
         }
-        Log.e("???????NICK", Constant.NICK);
         nickname.setText(Constant.NICK);
 
 
