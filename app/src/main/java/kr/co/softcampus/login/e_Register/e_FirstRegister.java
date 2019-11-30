@@ -5,18 +5,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +29,8 @@ import kr.co.softcampus.login.R;
 
 public class e_FirstRegister extends Activity {
 
-    // ID
 
+    // ID
     EditText EditText_Email;
     EditText EditText_password;
 
@@ -125,10 +120,13 @@ public class e_FirstRegister extends Activity {
 
     }
 
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstregister);
+
+//        mAuth = FirebaseAuth.getInstance();
         canGo = false;
 
         // ID
@@ -159,7 +157,27 @@ public class e_FirstRegister extends Activity {
                     Email_recheck_TextView.setText("이메일을 다시 확인해주세요");
                 } else {
                     Email_recheck_TextView.setText("");
+/*
+                    mAuth.createUserWithEmailAndPassword(Email, "").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                //updateUI(user);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(e_FirstRegister.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                //updateUI(null);
+                            }
 
+                            // ...
+                        }
+                    });
+*/
                     // 이메일 중복 체크
                     AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
                         @Override
@@ -242,5 +260,7 @@ public class e_FirstRegister extends Activity {
         });
 
 
+
     }
+
 }

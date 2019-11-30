@@ -10,8 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.common.hash.Hashing;
+
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.softcampus.login.Connection.ConType;
@@ -52,7 +55,7 @@ public class e_SecondRegister extends Activity {
                     protected JSONObject doInBackground(String... strings) {
                         ConnectionClass cc = new ConnectionClass();
                         try {
-                            JSONObject result = cc.MyConnection(Server.LUNI, Constant.WALLETGEN, ConType.TYPE_POST, new JSONObject().put("walletType", "LUNIVERSE").put("userKey", email + password));
+                            JSONObject result = cc.MyConnection(Server.LUNI, Constant.WALLETGEN, ConType.TYPE_POST, new JSONObject().put("walletType", "LUNIVERSE").put("userKey", Hashing.sha256().hashString(email + password, StandardCharsets.UTF_8).toString()));
                             return result;
                         } catch ( Exception e){
                             e.printStackTrace();
