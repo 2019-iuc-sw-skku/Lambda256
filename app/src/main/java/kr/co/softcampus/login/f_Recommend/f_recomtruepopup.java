@@ -19,7 +19,7 @@ public class f_recomtruepopup extends Activity {
     }
 
     public void mOnClose(View v){
-        finish();
+        //finish();
         Intent intent=new Intent(f_recomtruepopup.this, f_SearchRecom.class);
         startActivityForResult(intent, 1);
     }
