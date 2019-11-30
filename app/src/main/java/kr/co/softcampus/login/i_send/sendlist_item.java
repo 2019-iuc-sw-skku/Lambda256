@@ -1,12 +1,10 @@
 package kr.co.softcampus.login.i_send;
 
-import android.widget.ImageView;
-
 public class sendlist_item {
     private String address;
-    private double token;
+    private long token;
 
-    public sendlist_item(String address, double token){
+    public sendlist_item(String address, long token){
         this.address = address;
         this.token = token;
     }
@@ -20,11 +18,11 @@ public class sendlist_item {
         this.address = address;
     }
 
-    public double getToken() {
+    public long getToken() {
         return token;
     }
 
-    public void setToken(double token) {
+    public void setToken(long token) {
         this.token = token;
     }
 }

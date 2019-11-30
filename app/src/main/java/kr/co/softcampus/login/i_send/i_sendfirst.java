@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,9 +20,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.softcampus.login.Connection.ConType;
@@ -32,15 +29,11 @@ import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.b_LoginActivity;
-import kr.co.softcampus.login.c_Login.c_Loginmailerrorpopup;
-import kr.co.softcampus.login.c_Login.c_Loginpwerrorpopup;
 import kr.co.softcampus.login.c_Login.c_RETURN_STATE;
 import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
-
-import static kr.co.softcampus.login.c_Login.c_RETURN_STATE.SUCCESS;
 
 public class i_sendfirst extends Activity {
     ImageView homebutton;
@@ -88,8 +81,8 @@ public class i_sendfirst extends Activity {
             @Override
             public void onClick(View view) {
                 if(!addr.getText().toString().isEmpty() && !amnt.getText().toString().isEmpty()) {
-                    list.add(new sendlist_item(addr.getText().toString(), Double.parseDouble(amnt.getText().toString())));
-                    AsyncTask<ArrayList<sendlist_item>, Void, JSONObject> asyncTask = new AsyncTask<ArrayList<sendlist_item>, Void, JSONObject>() {
+                    list.add(new sendlist_item(addr.getText().toString(), Integer.parseInt(amnt.getText().toString())));
+                    AsyncTask<ArrayList<sendlist_item>, Void, JSONObject> sendAsyncTask = new AsyncTask<ArrayList<sendlist_item>, Void, JSONObject>() {
                         @Override
                         protected JSONObject doInBackground(ArrayList<sendlist_item>... arrayLists) {
                             ConnectionClass cc = new ConnectionClass();
@@ -107,17 +100,16 @@ public class i_sendfirst extends Activity {
                         }
                     };
 
-                    asyncTask.execute(list);
+                    sendAsyncTask.execute(list);
                     Boolean results = false;
                     JSONObject result = null;
 
                     try {
-                        result = asyncTask.get(10, TimeUnit.SECONDS);
+                        result = sendAsyncTask.get(10, TimeUnit.SECONDS);
                         results = result.getBoolean("result");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                     Log.e("!!!!!!!!!!!!!", result.toString());
                     c_RETURN_STATE return_state;
                     // 결과 - 이메일 혹은 비밀번호가 틀렸는지는 아직 체크하지 않음
@@ -126,10 +118,12 @@ public class i_sendfirst extends Activity {
                         Intent intent = new Intent(i_sendfirst.this, i_sendfinish.class);
                         intent.putExtra("address", list.get(0).getAddress());
                         intent.putExtra("amount", list.get(0).getToken());
+                        list.clear();
                         startActivity(intent);
                         finish();
                     } else {
                         Toast.makeText(i_sendfirst.this, "Fail", Toast.LENGTH_SHORT).show();
+                        list.clear();
                     }
 
                 }

@@ -30,8 +30,8 @@ public class i_sendfinish extends Activity {
 
         got = getIntent();
         conform=findViewById(R.id.confirm_button);
-        textView3 = findViewById(R.id.textView3);
-        textView4 = findViewById(R.id.textView4);
+        textView3 = findViewById(R.id.warningText_loginerror);
+        textView4 = findViewById(R.id.warningText_loginerror2);
         textView20 = findViewById(R.id.textView20);
 
         String addr = got.getStringExtra("address");
@@ -87,7 +87,7 @@ public class i_sendfinish extends Activity {
         }
 
         textView3.setText(results + " 님께");
-        textView4.setText(got.getDoubleExtra("amount", -1) + " 스코인");
+        textView4.setText(got.getIntExtra("amount", -1) + " 스코인");
         textView20.setText(balance);
 
         conform.setOnClickListener(new View.OnClickListener() {

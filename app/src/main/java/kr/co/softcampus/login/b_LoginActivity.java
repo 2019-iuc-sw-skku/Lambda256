@@ -140,10 +140,7 @@ public class b_LoginActivity extends AppCompatActivity {
                         }
                         Constant.EMAIL = etEmail.getText().toString();
                         intent = new Intent(b_LoginActivity.this, g_MainScreen.class);
-
-
-                        //   Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
-                     //   startActivity(intent2);
+                        startActivity(intent);
 
                         save();
                         finish();
