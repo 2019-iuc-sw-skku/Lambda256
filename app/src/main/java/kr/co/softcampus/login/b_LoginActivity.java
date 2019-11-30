@@ -12,9 +12,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.common.hash.Hashing;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.softcampus.login.Connection.ConType;
@@ -22,7 +25,6 @@ import kr.co.softcampus.login.Connection.ConnectionClass;
 import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.c_Login.c_Loginmailerrorpopup;
-import kr.co.softcampus.login.c_Login.c_Loginpwerrorpopup;
 import kr.co.softcampus.login.c_Login.c_RETURN_STATE;
 import kr.co.softcampus.login.e_Register.e_FirstRegister;
 
@@ -44,6 +46,8 @@ public class b_LoginActivity extends AppCompatActivity {
 
     ConnectionClass conn;
     String pk;
+
+    Intent intent;
 
     private SharedPreferences appData;
 
@@ -76,14 +80,7 @@ public class b_LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Toast.makeText(b_LoginActivity.this, "로그인 중 .", Toast.LENGTH_LONG).show();
-
-                Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
-                startActivity(intent2);
-
-                Toast.makeText(b_LoginActivity.this, "로그인 중 ..", Toast.LENGTH_LONG).show();
-
 
                 // 로그인 요청 (현재 private key 를 email+password로 하고 있음)
                 AsyncTask<String, Void, JSONObject> asyncTask = new AsyncTask<String, Void, JSONObject>() {
@@ -97,12 +94,14 @@ public class b_LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                             return null;
                         }
-
                         return result;
                     }
                 };
 
-                pk = etEmail.getText().toString() + etPw.getText().toString();
+                pk = Hashing.sha256()
+                        .hashString(etEmail.getText().toString() + etPw.getText().toString(), StandardCharsets.UTF_8)
+                        .toString();
+
                 asyncTask.execute(pk);
                 Boolean results = false;
                 JSONObject result = null;
@@ -126,17 +125,13 @@ public class b_LoginActivity extends AppCompatActivity {
 
                 switch (return_state) {
                     case EMAILFAIL:
-                        //만약 이메일이 일치하지 않을 때
-                        Intent intent = new Intent(b_LoginActivity.this, c_Loginmailerrorpopup.class);
+                    case PWFAIL:
+                        //Wrong with Login Account Information
+                        intent = new Intent(b_LoginActivity.this, c_Loginmailerrorpopup.class);
                         startActivityForResult(intent, 1);
                         break;
-                    case PWFAIL:
-                        //만약 비밀번호가 일치하지 않을 때
-                        Intent intent1 = new Intent(b_LoginActivity.this, c_Loginpwerrorpopup.class);
-                        startActivityForResult(intent1, 1);
-                        break;
                     case SUCCESS:
-                        //일치하면
+                        //Login Success
                         Constant.setPRIVATEKEY(pk);
                         try {
                             Constant.walletAddressUpdate(result.getJSONObject("data").getString("address"));
@@ -144,8 +139,10 @@ public class b_LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         Constant.EMAIL = etEmail.getText().toString();
+                        intent = new Intent(b_LoginActivity.this, g_MainScreen.class);
 
-                     //   Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
+
+                        //   Intent intent2 = new Intent(b_LoginActivity.this, g_MainScreen.class);
                      //   startActivity(intent2);
 
                         save();
