@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.b_LoginActivity;
-import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.j_giftcon.j_giftmain;
 
 public class l_exitpopup extends Activity {
     Button on;
@@ -31,7 +29,7 @@ public class l_exitpopup extends Activity {
         off=findViewById(R.id.off);
         on=findViewById(R.id.on);
 
-        imageView6=findViewById(R.id.imageView6);
+        imageView6=findViewById(R.id.errorImage);
         imageView6.setImageResource(R.drawable.broken_link);
 
         off.setOnClickListener(new View.OnClickListener() {

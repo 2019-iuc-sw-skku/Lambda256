@@ -11,7 +11,7 @@
         android:layout_height="44dp" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/errorImage"
         android:layout_width="57dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/error" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/warningText_loginerror"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -31,7 +31,7 @@
         android:textSize="22sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/closeButton_loginwerror"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="60dp"

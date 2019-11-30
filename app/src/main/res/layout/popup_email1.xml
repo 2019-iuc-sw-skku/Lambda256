@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="400dp"
@@ -23,7 +22,7 @@
         app:srcCompat="@drawable/paper_plane_1" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/warningText_loginerror"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -32,7 +31,7 @@
         android:textSize="22sp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/warningText_loginerror2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -50,7 +49,7 @@
         android:textSize="22sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/closeButton_loginwerror"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
