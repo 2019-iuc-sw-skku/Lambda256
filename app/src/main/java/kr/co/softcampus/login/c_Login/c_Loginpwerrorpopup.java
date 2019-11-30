@@ -16,14 +16,16 @@ public class c_Loginpwerrorpopup extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        //타이틀바 없애기
+        //Remove Title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popup_loginpwerror);
 
-        imageView6=findViewById(R.id.imageView6);
+        // Drawing error image
+        imageView6=findViewById(R.id.errorImage);
         imageView6.setImageResource(R.drawable.error);
     }
 
+    //click
     public void mOnClose(View v){
         finish();
     }

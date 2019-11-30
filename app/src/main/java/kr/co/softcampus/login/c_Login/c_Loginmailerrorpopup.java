@@ -5,17 +5,25 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import kr.co.softcampus.login.R;
 
+// This activity is for the popup content.
 public class c_Loginmailerrorpopup extends Activity {
 
+    ImageView warningImage;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        //타이틀바 없애기
+        warningImage = findViewById(R.id.errorImage);
+
+        // Remove Title Bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popup_loginemailerror);
+        // Drawing error image
+        warningImage=findViewById(R.id.errorImage);
+        warningImage.setImageResource(R.drawable.error);
     }
 
     public void mOnClose(View v){
