@@ -188,7 +188,7 @@ public class h_mypage1 extends Activity {
          */
         asyncTask.execute();
         try {
-            token.setText(Double.toString(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT));
+            token.setText(Long.toString(Math.round(Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT)));
         } catch (Exception e){
             token.setText("Connection Error");
         }
@@ -213,7 +213,7 @@ public class h_mypage1 extends Activity {
         list_itemArrayList.add(new list_item(new Date(System.currentTimeMillis()),"교내 봉사","+10000"));
 */
         listAdapter=new listAdapter(h_mypage1.this, list_itemArrayList);
-        listView.setAdapter(listAdapter);
+//        listView.setAdapter(listAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
