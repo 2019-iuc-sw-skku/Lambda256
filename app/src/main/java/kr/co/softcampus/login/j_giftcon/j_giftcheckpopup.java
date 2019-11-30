@@ -2,11 +2,10 @@ package kr.co.softcampus.login.j_giftcon;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -16,11 +15,6 @@ import android.widget.ImageView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -79,6 +73,7 @@ public class j_giftcheckpopup extends Activity {
                         }
 
                         try {
+                            Log.e("MYFIRSTRESULT", result.toString());
                             return result.getJSONObject("data").getString("txId");
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -86,20 +81,50 @@ public class j_giftcheckpopup extends Activity {
                         }
                     }
                 };
+
                 asyncTask.execute(get.getDoubleExtra("cost", 0.0) * Constant.TOKEN_UNIT);
                 String tx = "";
                 try {
                     tx = asyncTask.get(10, TimeUnit.SECONDS);
+                    Log.e("IHIHIHIHIHIHIHIHHIIHIH", tx);
+                    JSONObject tmp;
+                    do {
+                        AsyncTask<JSONObject, Void, JSONObject> checkasyncTask = new AsyncTask<JSONObject, Void, JSONObject>() {
+                            @Override
+                            protected JSONObject doInBackground(JSONObject... jsonObjects) {
+                                ConnectionClass cc = new ConnectionClass();
+                                JSONObject result = null;
+                                result = cc.MyConnection(Server.LUNI, Constant.HISTORY, ConType.TYPE_GET, jsonObjects[0]);
+
+                                return result;
+                            }
+                        };
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+
+                            }
+                        }, 2000);
+                        checkasyncTask.execute(new JSONObject().put("txid", tx));
+                        tmp = checkasyncTask.get();
+                        Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.getJSONObject("data").getJSONObject("history").toString());
+                    } while(tmp.getJSONObject("data").getJSONObject("history").getString("txStatus").equalsIgnoreCase("WAIT"));
+                    //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.toString());
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (TimeoutException e) {
                     e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if(tx.equals("")){
+
+                if(tx.equals("")) {
                     startActivityForResult(intent, -1);
                 }
+
                 AsyncTask<JSONObject, Void, JSONObject> lasyncTask = new AsyncTask<JSONObject, Void, JSONObject>() {
                     @Override
                     protected JSONObject doInBackground(JSONObject... jsonObjects) {
@@ -112,7 +137,9 @@ public class j_giftcheckpopup extends Activity {
                 };
                 JSONObject result = null;
                 try {
-                    lasyncTask.execute(new JSONObject().put("txid", tx).put("name", get.getStringExtra("name")).put("category1", get.getStringExtra("c1")).put("category2",get.getStringExtra("c2")));
+                    Log.e("txid", tx);
+//                    lasyncTask.execute(new JSONObject().put("txhash", tx).put("name", get.getStringExtra("name")).put("category1", get.getStringExtra("c1")).put("category2",get.getStringExtra("c2")));
+                    lasyncTask.execute(new JSONObject().put("txhash", tx).put("name", get.getStringExtra("name")).put("category1", get.getStringExtra("c1")).put("category2",get.getStringExtra("c2")));
                     result = lasyncTask.get(10, TimeUnit.SECONDS);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -124,6 +151,7 @@ public class j_giftcheckpopup extends Activity {
                         intent.putExtra("image", result.getJSONObject("data").getString("image"));
                         startActivityForResult(intent, 1);
                     } else{
+                        Log.e("MYRESULT", result.toString());
                         startActivityForResult(intent, -4);
                     }
                 } catch (Exception e){
@@ -134,8 +162,6 @@ public class j_giftcheckpopup extends Activity {
             }
         });
     }
-
-
 
     public boolean onTouchEvent(MotionEvent event){
         return event.getAction() != MotionEvent.ACTION_OUTSIDE;

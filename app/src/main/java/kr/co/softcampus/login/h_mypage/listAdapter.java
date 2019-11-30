@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.R;
 
 public class listAdapter extends BaseAdapter {
@@ -30,7 +29,12 @@ public class listAdapter extends BaseAdapter {
     @Override
     //리스트 뷰가 몇 개의 아이템을 가지고 있는지 알려주는 함수
     public int getCount() {
-        return this.list_itemArrayList.size();
+        try {
+            return this.list_itemArrayList.size();
+        } catch (NullPointerException ne){
+            ne.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

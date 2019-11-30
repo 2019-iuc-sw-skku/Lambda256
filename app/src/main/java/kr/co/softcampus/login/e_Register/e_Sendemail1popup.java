@@ -1,8 +1,6 @@
 package kr.co.softcampus.login.e_Register;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,8 +24,6 @@ public class e_Sendemail1popup extends Activity {
         imageView = findViewById(R.id.imageView9);
 
         imageView.setImageResource(R.drawable.paper_plane_1);
-
-
 
 
     }

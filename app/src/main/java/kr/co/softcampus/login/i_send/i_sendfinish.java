@@ -11,7 +11,6 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.softcampus.login.Connection.ConType;
@@ -36,6 +35,7 @@ public class i_sendfinish extends Activity {
         textView20 = findViewById(R.id.textView20);
 
         String addr = got.getStringExtra("address");
+
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
@@ -49,6 +49,7 @@ public class i_sendfinish extends Activity {
                 }
             }
         };
+
         AsyncTask<String, Void, JSONObject> nickasyncTask = new AsyncTask<String, Void, JSONObject>() {
             @Override
             protected JSONObject doInBackground(String... strings) {
@@ -65,6 +66,7 @@ public class i_sendfinish extends Activity {
                 return result;
             }
         };
+
         String balance = "-1";
         asyncTask.execute();
         try {

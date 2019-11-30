@@ -5,7 +5,6 @@ import android.util.Log;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -67,7 +66,6 @@ public class ConnectionClass {
      */
 
     public JSONObject MyConnection(Server to, String addurl, ConType conType, JSONObject jsonObject) {
-
         switch (to) {
             case SERVER:
                 baseURL = Constant.BASEURL;
@@ -104,14 +102,17 @@ public class ConnectionClass {
             case TYPE_GET:
                 try {
                     if(addurl == Constant.WALLETCHECK)
-                        con = (HttpURLConnection) new URL("https://api.luniverse.io/tx/v1.0/wallets/bridge?walletType="+jsonObject.get("walletType")+"&userKey="+jsonObject.get("userKey")).openConnection();
-
+                        con = (HttpURLConnection) new URL(Constant.LUNBASEURL+addurl+"?walletType="+jsonObject.get("walletType")+"&userKey="+jsonObject.get("userKey")).openConnection();
+                    else if(addurl == Constant.HISTORY){
+                        con = (HttpURLConnection) new URL(Constant.LUNBASEURL+addurl+"/"+jsonObject.get("txid")).openConnection();
+                    }
                     con.setRequestProperty("Authorization", Constant.getApikey());
 
                     /* http 소켓 만들기 */
                     con.setRequestMethod("GET");
                     con.setDoInput(true);
                     /* http 소켓 만들기 */
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -156,7 +157,12 @@ public class ConnectionClass {
                     is = con.getInputStream();
                     result = convertInputStreamToString(is);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    try {
+                        is = con.getErrorStream();
+                        result = convertInputStreamToString(is);
+                    } catch (Exception ee){
+                        ee.printStackTrace();
+                    }
                 }
                 break;
             case TYPE_GET:
@@ -185,6 +191,7 @@ public class ConnectionClass {
             Log.e("RESULT REAL", result);
         } catch (Exception e){
             e.printStackTrace();
+            Log.e("MY????", result);
         }
 
         return returnJson;

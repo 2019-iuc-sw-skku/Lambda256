@@ -21,12 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import kr.co.softcampus.login.Connection.ConType;
@@ -162,14 +159,15 @@ public class h_mypage1 extends Activity {
                         }
                     }
                     return list_items;
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
-                return null;
+                    return null;
                 }
             }
         };
 
 
+/*
         list_itemArrayList = null;
         historyTask.execute();
         try {
@@ -179,6 +177,8 @@ public class h_mypage1 extends Activity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+ */
         if(!Constant.WADDRESS.isEmpty())
             walletAddress.setText(Constant.WADDRESS);
 

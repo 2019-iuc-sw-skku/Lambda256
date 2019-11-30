@@ -85,6 +85,7 @@ public class e_SecondRegister extends Activity {
                     wreturn = asyncTask.get(10, TimeUnit.SECONDS);
                     wsuccess = wreturn.getBoolean("result");
                     Constant.WADDRESS=wreturn.getJSONObject("data").getString("address");
+                    Log.e("Sign WADDRESS", Constant.WADDRESS);
                 } catch (Exception e){
                     e.printStackTrace();
                 }

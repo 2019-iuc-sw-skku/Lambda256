@@ -21,8 +21,6 @@ import kr.co.softcampus.login.Connection.ConnectionClass;
 import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
-import kr.co.softcampus.login.b_LoginActivity;
-import kr.co.softcampus.login.k_infomain;
 
 public class f_SearchRecom extends Activity {
 
@@ -61,6 +59,7 @@ public class f_SearchRecom extends Activity {
 
                 // 추천인 주소 입력받음
                 address = editText_address_recommender.getText().toString();
+
 
 
                 /*

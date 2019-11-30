@@ -1,8 +1,5 @@
 package kr.co.softcampus.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -12,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +24,6 @@ import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.c_Login.c_Loginmailerrorpopup;
 import kr.co.softcampus.login.c_Login.c_Loginpwerrorpopup;
 import kr.co.softcampus.login.c_Login.c_RETURN_STATE;
-import kr.co.softcampus.login.d_SearchPW.d_SearchPW;
 import kr.co.softcampus.login.e_Register.e_FirstRegister;
 
 public class b_LoginActivity extends AppCompatActivity {
@@ -164,8 +162,9 @@ public class b_LoginActivity extends AppCompatActivity {
         SPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(b_LoginActivity.this, d_SearchPW.class);
-                startActivity(intent2);
+                Toast.makeText(b_LoginActivity.this, "기능 구현중에 있습니다.", Toast.LENGTH_SHORT).show();
+//                Intent intent2 = new Intent(b_LoginActivity.this, d_SearchPW.class);
+//                startActivity(intent2);
             }
         });
 
