@@ -8,11 +8,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -20,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -34,11 +30,8 @@ import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.b_LoginActivity;
 import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.h_mypage.h_mypage2;
 import kr.co.softcampus.login.i_send.i_sendfirst;
-import kr.co.softcampus.login.i_send.sendlist_item;
 import kr.co.softcampus.login.k_infomain;
-import kr.co.softcampus.login.n_center.n_giftcon1;
 
 public class j_giftmain extends Activity {
     ImageView homebutton;
@@ -82,13 +75,11 @@ public class j_giftmain extends Activity {
             asyncTask.execute();
             JSONArray results = null;
             JSONObject result = null;
-            int jalen = 0;
 
             try {
                 result = asyncTask.get(10, TimeUnit.SECONDS);
                 Log.e("!!!!!!!!!!!!!!!!!!!!", result.toString());
                 results = result.getJSONObject("data").getJSONArray("content");
-                jalen = result.getJSONObject("data").getInt("length");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -241,7 +232,7 @@ public class j_giftmain extends Activity {
         intent.putExtra("name", tmp.getName());
         intent.putExtra("c1", tmp.getCategory1());
         intent.putExtra("c2", tmp.getCategory2());
-        intent.putExtra("cost", tmp.getCost());
+        intent.putExtra("cost", Long.parseLong(Integer.toString(tmp.getCost())));
         startActivityForResult(intent, 1);
     }
 

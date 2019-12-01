@@ -59,14 +59,14 @@ public class j_giftcheckpopup extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(j_giftcheckpopup.this, j_giftfailpopup.class);
-                AsyncTask<Double, Void, String> asyncTask = new AsyncTask<Double, Void, String>() {
+                AsyncTask<Long, Void, String> asyncTask = new AsyncTask<Long, Void, String>() {
                     @Override
-                    protected String doInBackground(Double... doubles) {
+                    protected String doInBackground(Long... longs) {
                         ConnectionClass cc = new ConnectionClass();
                         JSONObject result;
                         try {
                             result = cc.MyConnection(Server.LUNI, Constant.LUNIPURCHASE, ConType.TYPE_POST,
-                                    new JSONObject().put("from", Constant.WADDRESS).put("inputs",new JSONObject().put("valueAmount", doubles[0])));
+                                    new JSONObject().put("from", Constant.WADDRESS).put("inputs",new JSONObject().put("valueAmount", longs[0])));
                         } catch (JSONException e) {
                             e.printStackTrace();
                             return null;
@@ -82,12 +82,14 @@ public class j_giftcheckpopup extends Activity {
                     }
                 };
 
-                asyncTask.execute(get.getDoubleExtra("cost", 0.0) * Constant.TOKEN_UNIT);
+                Log.e("MY COST", Long.toString(get.getLongExtra("cost", 0) * Constant.TOKEN_UNIT));
+                asyncTask.execute(get.getLongExtra("cost", 0) * Constant.TOKEN_UNIT);
                 String tx = "";
                 try {
                     tx = asyncTask.get(10, TimeUnit.SECONDS);
-                    Log.e("IHIHIHIHIHIHIHIHHIIHIH", tx);
+                    //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tx);
                     JSONObject tmp;
+
                     do {
                         AsyncTask<JSONObject, Void, JSONObject> checkasyncTask = new AsyncTask<JSONObject, Void, JSONObject>() {
                             @Override
@@ -103,14 +105,16 @@ public class j_giftcheckpopup extends Activity {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
-
+                                Log.d("j_giftcheckpopup","Waiting");
                             }
                         }, 2000);
                         checkasyncTask.execute(new JSONObject().put("txid", tx));
                         tmp = checkasyncTask.get();
-                        Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.getJSONObject("data").getJSONObject("history").toString());
+                        //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.getJSONObject("data").getJSONObject("history").toString());
                     } while(tmp.getJSONObject("data").getJSONObject("history").getString("txStatus").equalsIgnoreCase("WAIT"));
                     //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.toString());
+
+
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
