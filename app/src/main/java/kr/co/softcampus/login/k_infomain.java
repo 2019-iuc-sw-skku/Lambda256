@@ -155,8 +155,9 @@ public class k_infomain extends Activity {
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(k_infomain.this, h_mypage1.class);
-                //startActivityForResult(intent, 1);
+
+                Toast.makeText(getApplicationContext(), "기능 구현중입니다.", Toast.LENGTH_SHORT).show();
+
             }
         });
 

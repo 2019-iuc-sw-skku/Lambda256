@@ -154,8 +154,9 @@ public class g_MainScreen extends Activity {
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(g_MainScreen.this, h_mypage1.class);
-                startActivityForResult(intent, 1);
+
+                Toast.makeText(mContext, "기능 구현중입니다.", Toast.LENGTH_SHORT).show();
+
             }
         });
 

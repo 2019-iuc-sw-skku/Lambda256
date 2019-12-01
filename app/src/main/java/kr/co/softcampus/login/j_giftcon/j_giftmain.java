@@ -159,8 +159,9 @@ public class j_giftmain extends Activity {
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(j_giftmain.this, h_mypage1.class);
-                //startActivityForResult(intent, 1);
+
+                Toast.makeText(getApplicationContext(), "기능 구현중입니다.", Toast.LENGTH_SHORT).show();
+
             }
         });
 

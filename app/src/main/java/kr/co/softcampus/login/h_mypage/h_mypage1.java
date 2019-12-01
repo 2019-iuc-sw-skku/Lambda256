@@ -254,10 +254,11 @@ public class h_mypage1 extends Activity {
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent=new Intent(h_mypage1.this, listAdapter.class);
-               // startActivityForResult(intent, 1);
+
+                Toast.makeText(mContext, "기능 구현중입니다.", Toast.LENGTH_SHORT).show();
+
             }
-        }); //알람 기능 구현
+        });
 
         // 프로필 수정 activity
         editbutton.setOnClickListener(new View.OnClickListener() {

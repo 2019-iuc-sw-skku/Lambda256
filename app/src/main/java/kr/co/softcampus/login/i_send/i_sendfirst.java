@@ -162,10 +162,11 @@ public class i_sendfirst extends Activity {
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent intent=new Intent(i_sendfirst.this, listAdapter.class);
-                // startActivityForResult(intent, 1);
+
+                Toast.makeText(getApplicationContext(), "기능 구현중입니다.", Toast.LENGTH_SHORT).show();
+
             }
-        }); //알람 기능 구현
+        });
 
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
