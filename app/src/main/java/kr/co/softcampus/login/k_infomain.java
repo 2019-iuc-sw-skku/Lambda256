@@ -112,7 +112,6 @@ public class k_infomain extends Activity {
         recommend_Button = findViewById(R.id.commend);
 
 
-
         // 닉네임 받아오는 부분
         AsyncTask<String, Void, String> nickAsycnTask = new AsyncTask<String, Void, String>() {
             @Override
@@ -124,13 +123,18 @@ public class k_infomain extends Activity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+
                 return "Anonymous";
             }
         };
 
         nickAsycnTask.execute();
         try {
+
             nickname.setText(nickAsycnTask.get(10, TimeUnit.SECONDS));
+
+            
         } catch (Exception e) {
             nickname.setText("Anonymous");
         }
@@ -139,9 +143,7 @@ public class k_infomain extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
+
 
                 finish();// 현재 activity 종료
 
@@ -224,9 +226,7 @@ public class k_infomain extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
+
 
                 finish();// 현재 activity 종료
 
@@ -309,40 +309,7 @@ public class k_infomain extends Activity {
         alertDialog.show();
     }
 
-    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
 
-        ProgressDialog asyncDialog = new ProgressDialog(
-                k_infomain.this);
 
-        @Override
-        protected void onPreExecute() {
-            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            asyncDialog.setMessage("로딩중입니다..");
-
-            // show dialog
-            asyncDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            try {
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            asyncDialog.dismiss();
-
-            finish();
-            Toast.makeText(k_infomain.this, "로딩 완료", Toast.LENGTH_SHORT).show();
-            super.onPostExecute(result);
-        }
-    }
 
 }

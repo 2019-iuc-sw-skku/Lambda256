@@ -2,7 +2,6 @@ package kr.co.softcampus.login.h_mypage;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -10,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -99,6 +99,8 @@ public class h_mypage1 extends Activity {
 
         walletAddress = findViewById(R.id.textView19);
         token = findViewById(R.id.textView29);
+
+
 
         // 현재 잔고 가져오는 코드
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
@@ -239,14 +241,13 @@ public class h_mypage1 extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
-
                 finish();// 현재 activity 종료
 
                 Intent intent=new Intent(h_mypage1.this, g_MainScreen.class);
                 startActivityForResult(intent, 1);
+
+
+
             }
         });
 
@@ -273,15 +274,23 @@ public class h_mypage1 extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
-
                 finish();// 현재 activity 종료
 
                 Intent intent=new Intent(h_mypage1.this, h_mypage1.class);
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
+
+                final Toast toast = Toast.makeText(getApplicationContext(), "업데이트 완료", Toast.LENGTH_SHORT);
+                toast.show();
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 800);
+
             }
         });
 
@@ -313,15 +322,14 @@ public class h_mypage1 extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
-
                 finish();// 현재 activity 종료
 
+                //  loading_infomain
                 Intent intent=new Intent(h_mypage1.this, k_infomain.class);
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
                 startActivityForResult(intent, 1);
+
+
             }
         });
     }
@@ -363,42 +371,6 @@ public class h_mypage1 extends Activity {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
-
-        ProgressDialog asyncDialog = new ProgressDialog(
-                h_mypage1.this);
-
-        @Override
-        protected void onPreExecute() {
-            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            asyncDialog.setMessage("로딩중입니다..");
-
-            // show dialog
-            asyncDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            try {
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            asyncDialog.dismiss();
-
-            finish();
-            Toast.makeText(h_mypage1.this, "로딩 완료", Toast.LENGTH_SHORT).show();
-            super.onPostExecute(result);
-        }
     }
 
 

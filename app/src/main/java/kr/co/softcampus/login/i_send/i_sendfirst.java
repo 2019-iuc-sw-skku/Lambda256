@@ -134,16 +134,16 @@ public class i_sendfirst extends Activity {
         });
 
         Mybutton = bot.findViewById(R.id.Mybutton2);
-        Mybutton.setImageResource(R.drawable.mypage);
+      //  Mybutton.setImageResource(R.drawable.mypage);
 
         Send=bot.findViewById(R.id.Send2);
-        Send.setImageResource(R.drawable.send);
+      //  Send.setImageResource(R.drawable.send);
 
         Purchase=bot.findViewById(R.id.Purchase2);
-        Purchase.setImageResource(R.drawable.giftcon);
+       // Purchase.setImageResource(R.drawable.giftcon);
 
         Inform=bot.findViewById(R.id.Inform2);
-        Inform.setImageResource(R.drawable.info);
+    //    Inform.setImageResource(R.drawable.info);
 
 
 
@@ -151,9 +151,6 @@ public class i_sendfirst extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
 
                 finish();// 현재 activity 종료
 
@@ -174,10 +171,6 @@ public class i_sendfirst extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
-
                 finish();// 현재 activity 종료
 
                 Intent intent=new Intent(i_sendfirst.this, h_mypage1.class);
@@ -190,11 +183,8 @@ public class i_sendfirst extends Activity {
             @Override
             public void onClick(View view) {
 
-                finish();// 현재 activity 종료
-
-                Intent intent=new Intent(i_sendfirst.this, i_sendfirst.class);
-                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION); // 팝업 애니메이션 제거
-                startActivityForResult(intent, 1);
+                Toast.makeText(i_sendfirst.this, "받는 분의 지갑 주소와 송금할 스코인의 양을 입력해주세요", Toast.LENGTH_SHORT).show();
+              
             }
         });
 
@@ -214,9 +204,7 @@ public class i_sendfirst extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
+
 
                 finish();// 현재 activity 종료
 
@@ -266,40 +254,6 @@ public class i_sendfirst extends Activity {
         alertDialog.show();
     }
 
-    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
 
-        ProgressDialog asyncDialog = new ProgressDialog(
-                i_sendfirst.this);
-
-        @Override
-        protected void onPreExecute() {
-            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            asyncDialog.setMessage("로딩중입니다..");
-
-            // show dialog
-            asyncDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            try {
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            asyncDialog.dismiss();
-
-            finish();
-            Toast.makeText(i_sendfirst.this, "로딩 완료", Toast.LENGTH_SHORT).show();
-            super.onPostExecute(result);
-        }
-    }
 
 }

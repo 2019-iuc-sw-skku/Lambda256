@@ -85,7 +85,7 @@ public class g_MainScreen extends Activity {
         token = findViewById(R.id.textView16);
         nickname = findViewById(R.id.textView6);
 
-        Toast.makeText(g_MainScreen.this, "로그인 완료", Toast.LENGTH_LONG).show();
+   //     Toast.makeText(g_MainScreen.this, "로그인 하였습니다", Toast.LENGTH_LONG).show();
 
         // 현재 지갑에 있는 금액 확인 하는 코드
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
@@ -163,10 +163,6 @@ public class g_MainScreen extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
-
                 finish();// 현재 activity 종료
                 Intent intent = new Intent(g_MainScreen.this, h_mypage1.class);
 
@@ -203,9 +199,6 @@ public class g_MainScreen extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
 
                 finish();// 현재 activity 종료
 
@@ -259,42 +252,6 @@ public class g_MainScreen extends Activity {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
-
-        ProgressDialog asyncDialog = new ProgressDialog(
-                g_MainScreen.this);
-
-        @Override
-        protected void onPreExecute() {
-            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            asyncDialog.setMessage("로딩중입니다..");
-
-            // show dialog
-            asyncDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            try {
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            asyncDialog.dismiss();
-
-            finish();
-            Toast.makeText(g_MainScreen.this, "로딩 완료", Toast.LENGTH_SHORT).show();
-            super.onPostExecute(result);
-        }
     }
 
 

@@ -61,6 +61,7 @@ public class j_giftmain extends Activity {
         gift_listview = findViewById(R.id.gift_listview);
         giftlists = new ArrayList<>();
 
+
         AsyncTask<String, Void, JSONObject> asyncTask = new AsyncTask<String, Void, JSONObject>() {
             @Override
             protected JSONObject doInBackground(String... strings) {
@@ -148,10 +149,6 @@ public class j_giftmain extends Activity {
             @Override
             public void onClick(View view) {
 
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
-
                 finish();// 현재 activity 종료
 
                 Intent intent = new Intent(j_giftmain.this, g_MainScreen.class);
@@ -170,10 +167,6 @@ public class j_giftmain extends Activity {
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
 
                 finish();// 현재 activity 종료
 
@@ -210,10 +203,6 @@ public class j_giftmain extends Activity {
         Inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // 로딩중 팝업
-                CheckTypesTask task = new CheckTypesTask();
-                task.execute();
 
                 finish();// 현재 activity 종료
 
@@ -288,41 +277,6 @@ public class j_giftmain extends Activity {
         alertDialog.show();
     }
 
-    private class CheckTypesTask extends AsyncTask<Void, Void, Void> {
-
-        ProgressDialog asyncDialog = new ProgressDialog(
-                j_giftmain.this);
-
-        @Override
-        protected void onPreExecute() {
-            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            asyncDialog.setMessage("로딩중입니다..");
-
-            // show dialog
-            asyncDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            try {
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            asyncDialog.dismiss();
-
-            finish();
-            Toast.makeText(j_giftmain.this, "로딩 완료", Toast.LENGTH_SHORT).show();
-            super.onPostExecute(result);
-        }
-    }
 
 
 
