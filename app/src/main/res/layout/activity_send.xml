@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include
+        android:id="@+id/sendtop1"
+        layout="@layout/top1_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/mybuttonwhite"
+                android:ems="10"
+                android:hint="  받는 분 지갑 주소"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/Black"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/plusbutton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/blueplus" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/amount"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/mybuttonwhite"
+            android:ems="10"
+            android:hint="  스코인"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/Black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+<!--
+    <ListView
+        android:id="@+id/sendList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+-->
+
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/mybuttonblue"
+        android:lineSpacingExtra="18sp"
+        android:onClick="mOnClose"
+        android:text="보내기"
+        android:textColor="#FAFAFA"
+        android:textSize="18sp"
+        android:typeface="sans"
+        android:layout_weight="0"/>
+
+    <include
+        android:id="@+id/sendbot"
+        layout="@layout/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="0"/>
+</LinearLayout>

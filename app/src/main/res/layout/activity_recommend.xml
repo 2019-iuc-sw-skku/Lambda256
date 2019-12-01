@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="119dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/logo2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="추천인"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/address_recommender"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/mybuttonwhite"
+        android:ems="10"
+        android:hint="  추천인 지갑 주소"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="17dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="140dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/mybuttonwhite"
+            android:text="취소"
+            android:textColor="#092C61"
+            android:textSize="18sp"
+            android:typeface="sans" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button_confirm"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/mybuttonblue"
+            android:text="완료"
+            android:textColor="#FAFAFA"
+            android:textSize="18sp"
+            android:typeface="sans" />
+
+    </LinearLayout>
+
+</LinearLayout>

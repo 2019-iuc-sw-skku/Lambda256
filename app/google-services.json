@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "605399503076",
+    "firebase_url": "https://skku-coop.firebaseio.com",
+    "project_id": "skku-coop",
+    "storage_bucket": "skku-coop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605399503076:android:b9b69a58ae48425ba59cf1",
+        "android_client_info": {
+          "package_name": "kr.co.softcampus.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605399503076-92vjjr2d1gs9r10a8nijk9ggr103uo2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.co.softcampus.login",
+            "certificate_hash": "1f376bc903bf8c774db957c77750159f468971b0"
+          }
+        },
+        {
+          "client_id": "605399503076-0v1v71tj607olafi424i8ued59bul186.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyeQ-a69cftDYb_s-gmpU9l6SzqySrFBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605399503076-0v1v71tj607olafi424i8ued59bul186.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

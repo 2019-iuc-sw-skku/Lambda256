@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:background="@color/White">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="44dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/exit_1" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="로그아웃 하시겠습니까?"
+        android:textColor="@color/Black"
+        android:textSize="20sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/off"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/mybuttonwhite"
+            android:text="취소" />
+
+        <Button
+            android:id="@+id/on"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/mybuttonblue"
+            android:text="로그아웃"
+            android:textColor="@color/White" />
+
+    </LinearLayout>
+</LinearLayout>

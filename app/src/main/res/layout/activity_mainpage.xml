@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/top2_bar"
+        android:id="@+id/mainpagetop2"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="20dp"
+            app:srcCompat="@drawable/picture5" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="윤김박"
+            android:textColor="@color/Black"
+            android:textSize="36sp" />
+
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="주소" />
+            <TextView
+                android:id="@+id/walletaddress"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0xabcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKL"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/Black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_weight="0"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="129dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="보유 스코인"
+                android:textColor="@color/Black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="6,700"
+                android:textColor="@color/Black"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="168dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="보유 기프티콘"
+                android:textColor="@color/Black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:gravity="center|right"
+                android:text="2"
+                android:textColor="@color/Black"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <include
+            layout="@layout/bottom_bar"
+            android:id="@+id/mainpageBot"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_weight="0" />
+    </LinearLayout>
+
+</LinearLayout>

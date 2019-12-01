@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gift_list"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/mybuttonwhite">
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/starbucks" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/giftcontent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:gravity="center|end"
+            android:text="스타벅스-아이스 아메리카노"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:gravity="center|end"
+            android:text="3,500"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
