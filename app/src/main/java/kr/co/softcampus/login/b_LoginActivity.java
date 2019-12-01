@@ -83,7 +83,7 @@ public class b_LoginActivity extends AppCompatActivity {
                 Toast.makeText(b_LoginActivity.this, "로그인 중 .", Toast.LENGTH_LONG).show();
 
                 // 로그인 요청 (현재 private key 를 email+password로 하고 있음)
-                AsyncTask<String, Void, JSONObject> asyncTask = new AsyncTask<String, Void, JSONObject>() {
+                AsyncTask<String, Void, JSONObject> loginAsyncTask = new AsyncTask<String, Void, JSONObject>() {
                     @Override
                     protected JSONObject doInBackground(String... strings) {
                         ConnectionClass cc = new ConnectionClass();
@@ -102,12 +102,12 @@ public class b_LoginActivity extends AppCompatActivity {
                         .hashString(etEmail.getText().toString() + etPw.getText().toString(), StandardCharsets.UTF_8)
                         .toString();
 
-                asyncTask.execute(pk);
+                loginAsyncTask.execute(pk);
                 Boolean results = false;
                 JSONObject result = null;
 
                 try {
-                    result = asyncTask.get(10, TimeUnit.SECONDS);
+                    result = loginAsyncTask.get(10, TimeUnit.SECONDS);
                     results = result.getBoolean("result");
                 } catch (Exception e) {
                     e.printStackTrace();
