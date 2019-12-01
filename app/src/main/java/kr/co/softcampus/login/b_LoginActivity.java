@@ -98,6 +98,7 @@ public class b_LoginActivity extends AppCompatActivity {
                     }
                 };
 
+                // key index 를 sha256으로 암호화
                 pk = Hashing.sha256()
                         .hashString(etEmail.getText().toString() + etPw.getText().toString(), StandardCharsets.UTF_8)
                         .toString();
