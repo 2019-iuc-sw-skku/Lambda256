@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 
 import kr.co.softcampus.login.R;
+import kr.co.softcampus.login.e_Register.e_EndRegister;
 
 public class f_recomfalsepopup extends Activity {
     protected void onCreate(Bundle savedInstanceState){
@@ -20,7 +21,7 @@ public class f_recomfalsepopup extends Activity {
 
     public void mOnClose(View v){
         finish();
-        Intent intent=new Intent(f_recomfalsepopup.this, f_SearchRecom.class);
+        Intent intent=new Intent(f_recomfalsepopup.this, e_EndRegister.class);
         startActivityForResult(intent, 1);
     }
 
