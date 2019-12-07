@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class e_EndRegister extends Activity {
     Boolean flag_recom_button;
     TextView address;
     Context mContext;
+    Intent got;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,7 +38,21 @@ public class e_EndRegister extends Activity {
         button_login = findViewById(R.id.button_purchase);
         address = findViewById(R.id.textView8);
 
-        flag_recom_button = true; // true 가 추천인을 아직 입력하지 않은 상태
+
+        try{
+            got = getIntent();
+            flag_recom_button = got.getBooleanExtra("Success", false);
+            Log.e("FLAGRB", Boolean.toString(flag_recom_button));
+        } catch (Exception e){
+
+            Log.e("ERR_FLAGRB", Boolean.toString(flag_recom_button));
+            e.printStackTrace();
+            flag_recom_button = false;
+        }
+
+        if(flag_recom_button){
+            button_recommender.setVisibility(View.GONE);
+        }
 
         address.setText(Constant.WADDRESS);
 
@@ -55,8 +71,7 @@ public class e_EndRegister extends Activity {
         button_recommender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flag_recom_button == true){
-                    flag_recom_button = false;
+                if(flag_recom_button == false){
 
                     // 추천인 입력 화면으로 전환
                     Intent intent=new Intent(e_EndRegister.this, f_SearchRecom.class);

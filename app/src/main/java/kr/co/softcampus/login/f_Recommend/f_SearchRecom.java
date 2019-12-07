@@ -50,7 +50,6 @@ public class f_SearchRecom extends Activity {
 
         // Initialize the View
         imageView.setImageResource(R.drawable.logo2);
-        flag = false;
 
 
         Button_check.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +58,7 @@ public class f_SearchRecom extends Activity {
 
                 // 추천인 주소 입력받음
                 address = editText_address_recommender.getText().toString();
+
 
                 /*
                     성공적으로 추천인 코드를 입력받은 경우
@@ -93,6 +93,7 @@ public class f_SearchRecom extends Activity {
                     Toast.makeText(f_SearchRecom.this, "추천인에게 코인이 지급되었습니다.", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(f_SearchRecom.this, f_recomtruepopup.class);
+                    intent.putExtra("Success", true);
                     startActivityForResult(intent, 1);
                     finish();// 이전 화면으로 돌아감
 

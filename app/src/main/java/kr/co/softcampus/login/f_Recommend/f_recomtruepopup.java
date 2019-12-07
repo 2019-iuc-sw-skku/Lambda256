@@ -11,8 +11,11 @@ import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.e_Register.e_EndRegister;
 
 public class f_recomtruepopup extends Activity {
+    Intent got;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+        got = getIntent();
 
         //타이틀바 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -22,6 +25,11 @@ public class f_recomtruepopup extends Activity {
     public void mOnClose(View v){
         //finish();
         Intent intent=new Intent(f_recomtruepopup.this, e_EndRegister.class);
+        try{
+            intent.putExtra("Success", got.getBooleanExtra("Success", false));
+        }catch (Exception e){
+            intent.putExtra("Success", false);
+        }
         startActivityForResult(intent, 1);
     }
 
