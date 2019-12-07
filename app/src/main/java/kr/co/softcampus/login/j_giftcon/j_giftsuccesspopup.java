@@ -24,7 +24,7 @@ public class j_giftsuccesspopup extends Activity {
     }
 
     public void mOnClose(View v){
-        Intent intent=new Intent(j_giftsuccesspopup.this, j_giftmain.class);
+        Intent intent=new Intent(j_giftsuccesspopup.this, j_giftcontentpopup.class);
         startActivityForResult(intent, 0);
     }
 

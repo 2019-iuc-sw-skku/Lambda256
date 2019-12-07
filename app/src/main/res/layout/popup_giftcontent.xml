@@ -8,16 +8,16 @@
 
 
     <ImageView
-        android:id="@+id/imageView22"
+        android:id="@+id/gifticon"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="485dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         app:srcCompat="@drawable/starbucks" />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/gifticon_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -26,95 +26,5 @@
         android:text="스타벅스-아이스 아메리카노"
         android:textColor="@color/Black"
         android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/barcode_1517677" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="110dp">
-
-        <TableRow
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/textView34"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="end"
-                android:text="사용기한"
-                android:textColor="@color/Black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
-                android:gravity="end"
-                android:text="2019.08.30 까지"
-                android:textColor="@color/Black" />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/textView36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="end"
-                android:text="사용처"
-                android:textColor="@color/Black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView37"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
-                android:gravity="end"
-                android:text="스타벅스"
-                android:textColor="@color/Black" />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:id="@+id/textView38"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="end"
-                android:text="주문번호"
-                android:textColor="@color/Black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView39"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
-                android:gravity="end"
-                android:text="019283738-12981"
-                android:textColor="@color/Black" />
-        </TableRow>
-    </TableLayout>
 
 </LinearLayout>

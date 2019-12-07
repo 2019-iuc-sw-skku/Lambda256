@@ -2,7 +2,6 @@ package kr.co.softcampus.login.j_giftcon;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,11 +61,12 @@ public class gifticonAdapter extends ArrayAdapter<j_giftlist> {
         cost = convertView.findViewById(R.id.cost);
         count = convertView.findViewById(R.id.count);
 
+
         name.setText(giftlist.getName());
         category1.setText(giftlist.getCategory1());
         category2.setText(giftlist.getCategory2());
-        cost.setText(Integer.toString(giftlist.getCost())+" SKK");
-        count.setText(Integer.toString(giftlist.getCount()) + " 개");
+        cost.setText(giftlist.getCost() +" SKK");
+        count.setText(giftlist.getCount() + " 개");
         return convertView;
     }
 

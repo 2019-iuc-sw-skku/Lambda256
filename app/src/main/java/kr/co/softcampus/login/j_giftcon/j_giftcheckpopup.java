@@ -110,9 +110,7 @@ public class j_giftcheckpopup extends Activity {
                         }, 2000);
                         checkasyncTask.execute(new JSONObject().put("txid", tx));
                         tmp = checkasyncTask.get();
-                        //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.getJSONObject("data").getJSONObject("history").toString());
                     } while(tmp.getJSONObject("data").getJSONObject("history").getString("txStatus").equalsIgnoreCase("WAIT"));
-                    //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tmp.toString());
 
 
                 } catch (ExecutionException e) {
@@ -142,7 +140,6 @@ public class j_giftcheckpopup extends Activity {
                 JSONObject result = null;
                 try {
                     Log.e("txid", tx);
-//                    lasyncTask.execute(new JSONObject().put("txhash", tx).put("name", get.getStringExtra("name")).put("category1", get.getStringExtra("c1")).put("category2",get.getStringExtra("c2")));
                     lasyncTask.execute(new JSONObject().put("txhash", tx).put("name", get.getStringExtra("name")).put("category1", get.getStringExtra("c1")).put("category2",get.getStringExtra("c2")));
                     result = lasyncTask.get(10, TimeUnit.SECONDS);
                 } catch (Exception e) {
@@ -151,8 +148,11 @@ public class j_giftcheckpopup extends Activity {
                 }
                 try {
                     if (result.getBoolean("result")) {
-                        intent = new Intent(j_giftcheckpopup.this, j_giftsuccesspopup.class);
+                        intent = new Intent(j_giftcheckpopup.this, j_giftcontentpopup.class);
                         intent.putExtra("image", result.getJSONObject("data").getString("image"));
+                        intent.putExtra("c1", get.getStringExtra("c1"));
+                        intent.putExtra("c2", get.getStringExtra("c2"));
+                        Log.e("gifticon", result.getJSONObject("data").getString("image"));
                         startActivityForResult(intent, 1);
                     } else{
                         Log.e("MYRESULT", result.toString());
