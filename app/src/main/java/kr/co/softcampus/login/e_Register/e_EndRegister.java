@@ -89,33 +89,7 @@ public class e_EndRegister extends Activity {
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flag_recom_button == true){
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(e_EndRegister.this);
-                    dialog.setTitle("추천인을 입력하지 않으시겠습니까?")
-                            .setMessage("추천인 입력은 회원가입시 1회만 가능합니다.")
-
-                            .setPositiveButton("예", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                    Toast.makeText(e_EndRegister.this, "발급된 지갑주소로 로그인 해주세요.", Toast.LENGTH_LONG).show();
-
-                                    // 로그인 화면으로 전환
-                                    Intent intent = new Intent(getApplicationContext(), b_LoginActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
-
-                                }
-                            })
-                            .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            }).create().show();
-                }
-                // 추천인을 이미 입력 했다면
-                else{
+                if(flag_recom_button){
                     AlertDialog.Builder dialog = new AlertDialog.Builder(e_EndRegister.this);
                     dialog.setTitle("")
                             .setMessage("로그인 화면으로 이동하시겠습니까?")
@@ -139,6 +113,34 @@ public class e_EndRegister extends Activity {
 
                                 }
                             }).create().show();
+                }
+                // 추천인을 이미 입력 했다면
+                else{
+
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(e_EndRegister.this);
+                    dialog.setTitle("추천인을 입력하지 않으시겠습니까?")
+                            .setMessage("추천인 입력은 회원가입시 1회만 가능합니다.")
+
+                            .setPositiveButton("예", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    Toast.makeText(e_EndRegister.this, "발급된 지갑주소로 로그인 해주세요.", Toast.LENGTH_LONG).show();
+
+                                    // 로그인 화면으로 전환
+                                    Intent intent = new Intent(getApplicationContext(), b_LoginActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+
+                                }
+                            })
+                            .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            }).create().show();
+
                 }
             }
         });
