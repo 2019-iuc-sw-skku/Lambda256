@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -56,7 +57,7 @@ public class i_sendfinish extends Activity {
                 ConnectionClass cc = new ConnectionClass();
                 JSONObject result;
                 try {
-                    result = cc.MyConnection(Server.SERVER, Constant.NICKNAME, ConType.TYPE_POST,
+                    result = cc.MyConnection(Server.SERVER, Constant.NICKNAMEBYADDR, ConType.TYPE_POST,
                             new JSONObject().put("w_address", strings[0]));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -69,14 +70,30 @@ public class i_sendfinish extends Activity {
 
         String balance = "-1";
         asyncTask.execute();
+        long amnt;
+
+        try{
+            amnt = got.getLongExtra("amount", -1);
+        } catch (Exception e) {
+            amnt = 0;
+        }
         try {
             balance = asyncTask.get(10, TimeUnit.SECONDS);
+            Log.e("BALANCE01", balance);
+
+            balance = balance.substring(0, balance.length() - (int) Math.log10(Constant.TOKEN_UNIT));
+            long tmp_balance = Long.parseLong(balance) - amnt;
+            Log.e("BALANCE02", Long.toString(tmp_balance));
+            balance = Long.toString(tmp_balance);
+            Log.e("BALANCE03", balance);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         nickasyncTask.execute(addr);
         String results = null;
         JSONObject result = null;
+
 
         try {
             result = nickasyncTask.get(10, TimeUnit.SECONDS);
@@ -87,7 +104,7 @@ public class i_sendfinish extends Activity {
         }
 
         textView3.setText(results + " 님께");
-        textView4.setText(got.getIntExtra("amount", -1) + " 스코인");
+        textView4.setText(amnt + " SKKOIN");
         textView20.setText(balance);
 
         conform.setOnClickListener(new View.OnClickListener() {
