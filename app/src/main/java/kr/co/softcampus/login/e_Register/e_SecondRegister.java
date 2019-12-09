@@ -109,7 +109,7 @@ public class e_SecondRegister extends Activity {
                     startActivityForResult(intent, 1);
                     finish();
                 } else {
-                    Toast.makeText(e_SecondRegister.this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(e_SecondRegister.this, "이미 존재하는 닉네임 입니다.", Toast.LENGTH_SHORT).show();
                 }
 
             }
