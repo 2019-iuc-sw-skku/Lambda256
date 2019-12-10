@@ -35,21 +35,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textrest"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="잔액"
-            android:textColor="@color/Black"
-            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textskkoin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5,700스코인"
-            android:textColor="#979797"
-            android:textSize="20sp" />
     </LinearLayout>
 
     <Button

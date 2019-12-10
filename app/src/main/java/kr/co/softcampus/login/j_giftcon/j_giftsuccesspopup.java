@@ -1,13 +1,13 @@
 package kr.co.softcampus.login.j_giftcon;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
+import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.R;
 
 public class j_giftsuccesspopup extends Activity {
@@ -21,11 +21,13 @@ public class j_giftsuccesspopup extends Activity {
 
         imageView6=findViewById(R.id.errorImage);
         imageView6.setImageResource(R.drawable.success);
+        Constant.giftlists = null;
     }
 
     public void mOnClose(View v){
-        Intent intent=new Intent(j_giftsuccesspopup.this, j_giftcontentpopup.class);
-        startActivityForResult(intent, 0);
+        finish();
+//        Intent intent=new Intent(j_giftsuccesspopup.this, j_giftcontentpopup.class);
+//        startActivityForResult(intent, 0);
     }
 
     public boolean onTouchEvent(MotionEvent event){

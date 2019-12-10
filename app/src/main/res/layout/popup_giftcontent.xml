@@ -4,6 +4,7 @@
     android:layout_width="380dp"
     android:layout_height="600dp"
     android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
     android:background="@color/White">
 
 
@@ -20,11 +21,19 @@
         android:id="@+id/gifticon_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/noto_sans"
         android:gravity="center"
         android:text="스타벅스-아이스 아메리카노"
         android:textColor="@color/Black"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/imgDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="쿠폰 다운로드"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        />
 </LinearLayout>

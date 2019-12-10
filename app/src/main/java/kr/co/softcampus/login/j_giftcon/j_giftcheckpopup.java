@@ -154,6 +154,7 @@ public class j_giftcheckpopup extends Activity {
                         intent.putExtra("c2", get.getStringExtra("c2"));
                         Log.e("gifticon", result.getJSONObject("data").getString("image"));
                         startActivityForResult(intent, 1);
+                        finish();
                     } else{
                         Log.e("MYRESULT", result.toString());
                         startActivityForResult(intent, -4);
