@@ -2,7 +2,6 @@ package kr.co.softcampus.login.i_send;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -82,6 +81,7 @@ public class i_sendfirst extends Activity {
             public void onClick(View view) {
                 if(!addr.getText().toString().isEmpty() && !amnt.getText().toString().isEmpty()) {
                     list.add(new sendlist_item(addr.getText().toString(), Integer.parseInt(amnt.getText().toString())));
+
                     AsyncTask<ArrayList<sendlist_item>, Void, JSONObject> sendAsyncTask = new AsyncTask<ArrayList<sendlist_item>, Void, JSONObject>() {
                         @Override
                         protected JSONObject doInBackground(ArrayList<sendlist_item>... arrayLists) {
@@ -90,7 +90,7 @@ public class i_sendfirst extends Activity {
                             try {
                                 result = cc.MyConnection(Server.LUNI, Constant.TOKENSEND, ConType.TYPE_POST,
                                         new JSONObject().put("from", Constant.WADDRESS).put("inputs",
-                                                new JSONObject().put("receiverAddress", arrayLists[0].get(0).getAddress()).put("valueAmount", arrayLists[0].get(0).getToken() * Constant.TOKEN_UNIT)));
+                                                new JSONObject().put("receiverAddress", arrayLists[0].get(0).getAddress()).put("valueAmount", arrayLists[0].get(0).getToken() +"000000000000000000")));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 return null;

@@ -72,7 +72,6 @@ public class e_EndRegister extends Activity {
             @Override
             public void onClick(View view) {
                 if(flag_recom_button == false){
-
                     // 추천인 입력 화면으로 전환
                     Intent intent=new Intent(e_EndRegister.this, f_SearchRecom.class);
                     startActivityForResult(intent, 1);
@@ -116,7 +115,6 @@ public class e_EndRegister extends Activity {
                 }
                 // 추천인을 이미 입력 했다면
                 else{
-
                     AlertDialog.Builder dialog = new AlertDialog.Builder(e_EndRegister.this);
                     dialog.setTitle("추천인을 입력하지 않으시겠습니까?")
                             .setMessage("추천인 입력은 회원가입시 1회만 가능합니다.")
@@ -140,7 +138,6 @@ public class e_EndRegister extends Activity {
 
                                 }
                             }).create().show();
-
                 }
             }
         });

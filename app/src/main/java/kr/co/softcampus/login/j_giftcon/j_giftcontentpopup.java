@@ -2,6 +2,7 @@ package kr.co.softcampus.login.j_giftcon;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import java.io.OutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
+import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.R;
 
 public class j_giftcontentpopup extends Activity {
@@ -69,27 +71,35 @@ public class j_giftcontentpopup extends Activity {
             public void onClick(View view) {
                 String path = Environment.getExternalStorageDirectory().toString();
                 Date time = Calendar.getInstance().getTime();
-                String realPath = path + "/SKKOIN_GIFT_"+time.toString() + ".jpg";
+                String realPath = Constant.MYPATH + "/SKKOIN_GIFT_"+time.toString() + ".jpg";
+                File SKKOINAppDir = new File(Constant.MYPATH);
+                Log.e("PATH", Constant.MYPATH);
+
+                if(!SKKOINAppDir.exists() && !SKKOINAppDir.isDirectory() && checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    SKKOINAppDir.mkdirs();
+                }
+
                 File file = new File(realPath);
                 OutputStream out = null;
                 try {
                     out = new FileOutputStream(file);
+                    //File write logic here
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        out.flush();
-                        out.close();
+                    out.flush();
+                    out.close();
 //                        sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://"+ Environment.getExternalStorageDirectory())));
-                        Log.e("PATH", realPath);
-                        Toast.makeText(j_giftcontentpopup.this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(j_giftcontentpopup.this, j_giftmain.class);
-                        startActivityForResult(intent, 1);
-                        finish();
-                    } catch (IOException e){
-                        e.printStackTrace();
-                    }
+                    Log.e("PATH", realPath);
+                    Toast.makeText(j_giftcontentpopup.this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
+//                    getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Constant.MYPATH)));
+                    Intent intent= new Intent(j_giftcontentpopup.this, j_giftmain.class);
+                    startActivityForResult(intent, 1);
+                    finish();
+                } catch (FileNotFoundException e) {
+                    Toast.makeText(j_giftcontentpopup.this, "어플리케이션 파일 접근 권한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                } catch (IOException e){
+                    Toast.makeText(j_giftcontentpopup.this, "어플리케이션 파일 접근 권한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
             }
         });

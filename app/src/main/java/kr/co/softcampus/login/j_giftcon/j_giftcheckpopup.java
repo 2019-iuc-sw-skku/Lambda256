@@ -59,9 +59,9 @@ public class j_giftcheckpopup extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(j_giftcheckpopup.this, j_giftfailpopup.class);
-                AsyncTask<Long, Void, String> asyncTask = new AsyncTask<Long, Void, String>() {
+                AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
                     @Override
-                    protected String doInBackground(Long... longs) {
+                    protected String doInBackground(String... longs) {
                         ConnectionClass cc = new ConnectionClass();
                         JSONObject result;
                         try {
@@ -83,7 +83,7 @@ public class j_giftcheckpopup extends Activity {
                 };
 
                 Log.e("MY COST", Long.toString(get.getLongExtra("cost", 0) * Constant.TOKEN_UNIT));
-                asyncTask.execute(get.getLongExtra("cost", 0) * Constant.TOKEN_UNIT);
+                asyncTask.execute(get.getLongExtra("cost", 0) + "000000000000000000");
                 String tx = "";
                 try {
                     tx = asyncTask.get(10, TimeUnit.SECONDS);
