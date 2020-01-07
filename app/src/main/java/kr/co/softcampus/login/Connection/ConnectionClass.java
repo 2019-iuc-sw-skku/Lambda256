@@ -13,13 +13,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-/*
- * Class name: ConnectionClass
- * Descriptions: This class is about all functions to connect servers.
- * 2019. 7. 30.
- * Made by Keonyoung Shim
- * Contact: +8210-9919-9004
- * Email: kyshim9004@gmail.com
+/**
+ * @name ConnectionClass
+ * @escriptions This class is about all functions to connect servers.
+ * @created 2019. 7. 30.
+ * @author Keonyoung Shim(kyshim9004@gmail.com)
  */
 
 public class ConnectionClass {

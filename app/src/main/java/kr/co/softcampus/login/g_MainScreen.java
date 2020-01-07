@@ -2,7 +2,6 @@ package kr.co.softcampus.login;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -27,6 +26,11 @@ import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
+
+/**
+ * @name MainActivity
+ * @descriptions 로그인 후 사용 시 메인 화면
+ */
 
 public class g_MainScreen extends Activity {
     Context mContext;
@@ -85,7 +89,6 @@ public class g_MainScreen extends Activity {
         token = findViewById(R.id.textView16);
         nickname = findViewById(R.id.textView6);
 
-   //     Toast.makeText(g_MainScreen.this, "로그인 하였습니다", Toast.LENGTH_LONG).show();
 
         // 현재 지갑에 있는 금액 확인 하는 코드
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
@@ -118,8 +121,9 @@ public class g_MainScreen extends Activity {
         };
 
         asyncTask.execute();
+
         double curTokenDouble = 0;
-        long curToken = 0;
+        long curToken = 0;  // 현재 토큰
         walletAddress.setText(Constant.WADDRESS);
         try {
             curTokenDouble = Double.parseDouble(asyncTask.get(10, TimeUnit.SECONDS))/Constant.TOKEN_UNIT;
@@ -140,7 +144,7 @@ public class g_MainScreen extends Activity {
         }
         nickname.setText(Constant.NICK);
 
-
+        // 지갑주소 클릭 시 주소 복사
         walletAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,14 +155,14 @@ public class g_MainScreen extends Activity {
             }
         });
 
+        // 알림창
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Toast.makeText(mContext, "기능 구현중입니다.", Toast.LENGTH_SHORT).show();
-
             }
         });
+
 
         Mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,13 +213,8 @@ public class g_MainScreen extends Activity {
             }
         });
 
-
-
-
-
-
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();

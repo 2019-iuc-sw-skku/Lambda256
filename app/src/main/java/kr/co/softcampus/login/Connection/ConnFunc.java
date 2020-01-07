@@ -4,6 +4,12 @@ import android.os.AsyncTask;
 
 import org.json.JSONObject;
 
+
+/**
+ * 사용하지 않은 class
+ * 원래 목적: aysnctask와 함께 통신 기능 구현
+ */
+
 public class ConnFunc {
 
 

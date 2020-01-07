@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
-import java.util.EventListener;
 
 import kr.co.softcampus.login.R;
+
+
+/**
+ * @unused
+ * @name Sendmailpopup
+ * @descriptions 비밀번호 찾기 시 이메일 보냈다는 popup
+ */
+
 
 public class d_Sendemailpopup extends Activity {
     protected void onCreate(Bundle savedInstanceState){

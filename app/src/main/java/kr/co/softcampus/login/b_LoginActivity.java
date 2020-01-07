@@ -28,6 +28,11 @@ import kr.co.softcampus.login.c_Login.c_Loginmailerrorpopup;
 import kr.co.softcampus.login.c_Login.c_RETURN_STATE;
 import kr.co.softcampus.login.e_Register.e_FirstRegister;
 
+/**
+ * @name LoginActivity
+ * @descriptions id/pw 입력 화면
+ */
+
 public class b_LoginActivity extends AppCompatActivity {
 
     //로그인 세션 유지
@@ -123,7 +128,7 @@ public class b_LoginActivity extends AppCompatActivity {
                 }
 
 
-
+                // 결과에 따른 행위 설
                 switch (return_state) {
                     case EMAILFAIL:
                     case PWFAIL:

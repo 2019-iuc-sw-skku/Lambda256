@@ -27,8 +27,13 @@ import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
-public class e_FirstRegister extends Activity {
 
+/**
+ * @name FirstRegister
+ * @descriptions 회원가입  화면
+ */
+
+public class e_FirstRegister extends Activity {
 
     // ID
     EditText EditText_Email;
@@ -157,27 +162,7 @@ public class e_FirstRegister extends Activity {
                     Email_recheck_TextView.setText("이메일을 다시 확인해주세요");
                 } else {
                     Email_recheck_TextView.setText("");
-/*
-                    mAuth.createUserWithEmailAndPassword(Email, "").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                //updateUI(user);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(e_FirstRegister.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                                //updateUI(null);
-                            }
 
-                            // ...
-                        }
-                    });
-*/
                     // 이메일 중복 체크
                     AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
                         @Override

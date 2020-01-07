@@ -23,6 +23,11 @@ import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
+/**
+ * @name SecondRegister
+ * @descriptions 회원가입 두번째 화면
+ */
+
 public class e_SecondRegister extends Activity {
     Button Check_Button;
     Intent get;

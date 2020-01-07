@@ -8,6 +8,13 @@ import android.widget.Button;
 
 import kr.co.softcampus.login.R;
 
+
+/**
+ * @unused
+ * @name SearchPW
+ * @descriptions pw 찾기 화면
+ */
+
 public class d_SearchPW extends Activity {
     Button Check;
     protected void onCreate(Bundle savedInstanceState) {

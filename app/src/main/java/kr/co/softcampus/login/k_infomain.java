@@ -2,7 +2,6 @@ package kr.co.softcampus.login;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -29,6 +28,12 @@ import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.l_setting.l_settingfirst;
 import kr.co.softcampus.login.m_getskkoin.m_getskkoin1;
 import kr.co.softcampus.login.n_center.n_customer_center_first;
+
+
+/**
+ * @name infomain
+ * @descriptions 환경설정창
+ */
 
 public class k_infomain extends Activity {
     ImageView homebutton;
@@ -123,7 +128,6 @@ public class k_infomain extends Activity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
 
                 return "Anonymous";
             }

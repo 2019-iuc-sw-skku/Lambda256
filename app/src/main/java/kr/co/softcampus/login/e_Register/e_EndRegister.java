@@ -19,6 +19,11 @@ import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.b_LoginActivity;
 import kr.co.softcampus.login.f_Recommend.f_SearchRecom;
 
+/**
+ * @name EndRegister
+ * @descriptions 회원가입 마지막 화면
+ */
+
 public class e_EndRegister extends Activity {
 
     Button button_recommender;

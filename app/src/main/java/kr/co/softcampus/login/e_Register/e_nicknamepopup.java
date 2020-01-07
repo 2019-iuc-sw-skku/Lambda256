@@ -9,6 +9,11 @@ import android.view.Window;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name nicknamepopup
+ * @descriptions 닉네임 중복될 경우 뜨는 팝업
+ */
+
 public class e_nicknamepopup extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

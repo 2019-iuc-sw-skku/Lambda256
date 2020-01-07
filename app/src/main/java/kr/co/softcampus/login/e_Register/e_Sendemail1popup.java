@@ -9,6 +9,11 @@ import android.widget.ImageView;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name Sendemail1popup
+ * @descriptions 이메일 전송했다는 알림 팝업
+ */
+
 public class e_Sendemail1popup extends Activity {
 
     ImageView imageView;
