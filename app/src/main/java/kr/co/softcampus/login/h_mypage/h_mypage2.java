@@ -6,21 +6,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
+
+/**
+ * @name mypage2
+ * @descriptions 프로필 편집 화면
+ */
 
 public class h_mypage2 extends Activity {
     ImageView homebutton;

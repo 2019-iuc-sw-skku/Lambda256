@@ -9,11 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import kr.co.softcampus.login.R;
-import kr.co.softcampus.login.g_MainScreen;
+
+/**
+ * @name customer_center_first
+ * @descriptions FAQ 화면
+ * @author 배수영
+ */
 
 public class n_customer_center_first extends Activity {
 

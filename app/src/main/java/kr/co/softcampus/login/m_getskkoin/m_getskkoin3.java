@@ -7,30 +7,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import kr.co.softcampus.login.R;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
 import me.relex.circleindicator.CircleIndicator;
+
+
+/**
+ * @name getskkoin3
+ * @descriptions 스코인 얻는 법 가이드창
+ * @author 배수영
+ */
 
 public class m_getskkoin3 extends Activity {
 

@@ -2,12 +2,10 @@ package kr.co.softcampus.login.j_giftcon;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -32,6 +30,12 @@ import kr.co.softcampus.login.g_MainScreen;
 import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.k_infomain;
+
+
+/**
+ * @name giftmain
+ * @descriptions 상품권 교환 메인 화
+ */
 
 public class j_giftmain extends Activity {
     ImageView homebutton;
@@ -62,6 +66,7 @@ public class j_giftmain extends Activity {
         giftlists = new ArrayList<>();
 
 
+        // 상품권 리스트 불러오는 코드
         AsyncTask<String, Void, JSONObject> asyncTask = new AsyncTask<String, Void, JSONObject>() {
             @Override
             protected JSONObject doInBackground(String... strings) {
@@ -79,7 +84,7 @@ public class j_giftmain extends Activity {
 
             try {
                 result = asyncTask.get(10, TimeUnit.SECONDS);
-                Log.e("!!!!!!!!!!!!!!!!!!!!", result.toString());
+                //Log.e("!!!!!!!!!!!!!!!!!!!!", result.toString());
                 results = result.getJSONObject("data").getJSONArray("content");
             } catch (Exception e) {
                 e.printStackTrace();

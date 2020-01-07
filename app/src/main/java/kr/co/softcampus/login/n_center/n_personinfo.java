@@ -9,16 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import kr.co.softcampus.login.R;
-import kr.co.softcampus.login.g_MainScreen;
-import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.i_send.i_sendfirst;
-import kr.co.softcampus.login.j_giftcon.j_giftmain;
-import kr.co.softcampus.login.k_infomain;
-import kr.co.softcampus.login.l_setting.l_alarm;
-import kr.co.softcampus.login.l_setting.l_exitpopup;
-import kr.co.softcampus.login.l_setting.l_logoutpopup;
-import kr.co.softcampus.login.l_setting.l_rule;
-import kr.co.softcampus.login.l_setting.l_settingfirst;
+
+
+/**
+ * @name personinfo
+ * @descriptions FAQ
+ * @author 배수영
+ */
 
 public class n_personinfo extends Activity {
 

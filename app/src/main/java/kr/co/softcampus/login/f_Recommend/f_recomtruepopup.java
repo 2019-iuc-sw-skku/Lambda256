@@ -10,6 +10,11 @@ import android.view.Window;
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.e_Register.e_EndRegister;
 
+/**
+ * @name recomtruepopup
+ * @descriptions 추천인 입력 성공 팝업
+ */
+
 public class f_recomtruepopup extends Activity {
     Intent got;
     protected void onCreate(Bundle savedInstanceState){

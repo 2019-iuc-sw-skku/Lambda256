@@ -25,6 +25,11 @@ import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
+/**
+ * @name giftcheckpopup
+ * @descriptions 구매의사 확인
+ */
+
 public class j_giftcheckpopup extends Activity {
 
     Intent get;
@@ -59,6 +64,8 @@ public class j_giftcheckpopup extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(j_giftcheckpopup.this, j_giftfailpopup.class);
+
+                // 해당하는 금액만큼 토큰 송금
                 AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... longs) {
@@ -85,6 +92,8 @@ public class j_giftcheckpopup extends Activity {
                 Log.e("MY COST", Long.toString(get.getLongExtra("cost", 0) * Constant.TOKEN_UNIT));
                 asyncTask.execute(get.getLongExtra("cost", 0) + "000000000000000000");
                 String tx = "";
+
+                // 송금한 transaction id를 이용하여 기프티콘 교환 신청
                 try {
                     tx = asyncTask.get(10, TimeUnit.SECONDS);
                     //Log.e("IHIHIHIHIHIHIHIHHIIHIH", tx);
@@ -103,11 +112,14 @@ public class j_giftcheckpopup extends Activity {
                         };
 
                         Handler handler = new Handler();
+
+                        // transaction 반영시간 고려
                         handler.postDelayed(new Runnable() {
                             public void run() {
                                 Log.d("j_giftcheckpopup","Waiting");
                             }
                         }, 2000);
+
                         checkasyncTask.execute(new JSONObject().put("txid", tx));
                         tmp = checkasyncTask.get();
                     } while(tmp.getJSONObject("data").getJSONObject("history").getString("txStatus").equalsIgnoreCase("WAIT"));

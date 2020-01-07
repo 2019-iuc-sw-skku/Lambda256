@@ -37,6 +37,12 @@ import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
 
+
+/**
+ * @name mypage1
+ * @descriptions 내 페이지 화면
+ */
+
 public class h_mypage1 extends Activity {
 
     Context mContext;

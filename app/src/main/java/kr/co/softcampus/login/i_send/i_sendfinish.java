@@ -20,6 +20,11 @@ import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
+/**
+ * @name sendfinish
+ * @descriptions 송금 성공 시 화면
+ */
+
 public class i_sendfinish extends Activity {
     Button conform;
     TextView textView3, textView4, textView20;

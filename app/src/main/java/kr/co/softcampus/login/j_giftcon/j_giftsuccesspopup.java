@@ -10,6 +10,12 @@ import android.widget.ImageView;
 import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.R;
 
+
+/**
+ * @name giftsuccesspopup
+ * @descriptions 상품권 교환 성공 팝업
+ */
+
 public class j_giftsuccesspopup extends Activity {
     ImageView imageView6;
     protected void onCreate(Bundle savedInstanceState){

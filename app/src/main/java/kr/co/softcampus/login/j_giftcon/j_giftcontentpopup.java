@@ -30,6 +30,12 @@ import java.util.Date;
 import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.R;
 
+
+/**
+ * @name giftcontentpopup
+ * @descriptions 받은 상품권 확인 및 저장
+ */
+
 public class j_giftcontentpopup extends Activity {
     TextView giftName;
     ImageView gift;
@@ -54,6 +60,8 @@ public class j_giftcontentpopup extends Activity {
         String c1 = got.getStringExtra("c1");
         String c2 = got.getStringExtra("c2");
         Log.e("IMAGESTRING", img_string);
+
+        // 상품권 base64로 받아서 image화
         String base64Image = img_string.split(",")[1];
         try {
             byte[] imageBytes = base64Image.getBytes();
@@ -66,6 +74,7 @@ public class j_giftcontentpopup extends Activity {
         }
         giftName.setText(c1 + " - " + c2);
 
+        // 상품권 저장 버튼
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,11 +12,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import kr.co.softcampus.login.R;
-import kr.co.softcampus.login.g_MainScreen;
-import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.i_send.i_sendfirst;
-import kr.co.softcampus.login.j_giftcon.j_giftmain;
-import kr.co.softcampus.login.k_infomain;
+
+/**
+ * @name alarm
+ * @descriptions 푸시 알림 설정 화면
+ * @undeveloped
+ * @author 배수영
+ */
 
 public class l_alarm extends Activity {
     ImageView homebutton;

@@ -9,6 +9,11 @@ import android.view.Window;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name sendcheck
+ * @descriptions 송금여부확인
+ */
+
 public class i_sendcheck extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

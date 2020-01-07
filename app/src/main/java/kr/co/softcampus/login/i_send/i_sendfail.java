@@ -9,6 +9,11 @@ import android.view.Window;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name sendfail
+ * @descriptions 송금 실패 시 화면
+ */
+
 public class i_sendfail extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

@@ -1,7 +1,6 @@
 package kr.co.softcampus.login.l_setting;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,8 +8,12 @@ import android.view.Window;
 import android.widget.Button;
 
 import kr.co.softcampus.login.R;
-import kr.co.softcampus.login.h_mypage.h_mypage1;
-import kr.co.softcampus.login.i_send.i_sendfirst;
+
+/**
+ * @name alarmpopup
+ * @descriptions 알람 설정 팝업
+ * @author 배수영
+ */
 
 public class l_alarmpopup extends Activity {
 

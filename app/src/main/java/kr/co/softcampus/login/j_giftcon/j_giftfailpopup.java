@@ -10,6 +10,12 @@ import android.widget.ImageView;
 
 import kr.co.softcampus.login.R;
 
+
+/**
+ * @name giftfailpopup
+ * @descriptions 상품권 교환 실패 메시지
+ */
+
 public class j_giftfailpopup extends Activity {
 
     ImageView imageView6;

@@ -10,6 +10,11 @@ import android.view.Window;
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.e_Register.e_EndRegister;
 
+/**
+ * @name recomfalsepopup
+ * @descriptions 추천인 입력 실패 팝업창
+ */
+
 public class f_recomfalsepopup extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

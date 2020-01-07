@@ -1,5 +1,11 @@
 package kr.co.softcampus.login.j_giftcon;
 
+
+/**
+ * @name giftlist
+ * @descriptions 상품권 자료형
+ */
+
 public class j_giftlist {
     private String name, category1, category2;
     private int cost, count;

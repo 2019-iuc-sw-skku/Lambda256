@@ -1,25 +1,14 @@
 package kr.co.softcampus.login.l_setting;
 
 import android.app.Activity;
-
-
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.os.Handler;
-
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.g_MainScreen;
@@ -27,6 +16,13 @@ import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
+
+
+/**
+ * @name rule
+ * @descriptions 이용약관
+ * @author 배수영
+ */
 
 public class l_rule extends Activity {
 

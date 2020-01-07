@@ -16,6 +16,11 @@ import java.util.List;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name gifticonAdapter
+ * @descriptions gifticon 보여줄 listview 지원
+ */
+
 public class gifticonAdapter extends ArrayAdapter<j_giftlist> {
     @Override
     public void add(@Nullable j_giftlist object) {

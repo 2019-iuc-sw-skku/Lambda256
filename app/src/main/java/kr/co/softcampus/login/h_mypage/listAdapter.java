@@ -11,6 +11,11 @@ import java.util.ArrayList;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name listAdapter
+ * @descriptions 트랜잭션 보여줄 시 listview 지원
+ */
+
 public class listAdapter extends BaseAdapter {
     Context context;
     ArrayList<list_item> list_itemArrayList;

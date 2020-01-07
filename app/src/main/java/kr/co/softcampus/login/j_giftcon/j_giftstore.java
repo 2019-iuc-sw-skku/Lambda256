@@ -14,6 +14,13 @@ import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.k_infomain;
 
+
+/**
+ * @unused
+ * @name giftstore
+ * @descriptions 상품권 저장 화면
+ */
+
 public class j_giftstore extends Activity {
     ImageView homebutton;
     ImageView bell;

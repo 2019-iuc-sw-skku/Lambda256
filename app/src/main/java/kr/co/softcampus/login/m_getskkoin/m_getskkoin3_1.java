@@ -10,6 +10,12 @@ import androidx.fragment.app.Fragment;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name getskkoin3
+ * @descriptions 스코인 얻는 법 가이드창
+ * @author 배수영
+ */
+
 public class m_getskkoin3_1 extends Fragment {
     private String title;
     private int page;

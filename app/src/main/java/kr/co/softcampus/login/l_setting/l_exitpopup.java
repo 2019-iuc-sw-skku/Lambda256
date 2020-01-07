@@ -13,6 +13,14 @@ import android.widget.Toast;
 import kr.co.softcampus.login.R;
 import kr.co.softcampus.login.b_LoginActivity;
 
+
+/**
+ * @unused
+ * @name exitpopup
+ * @descriptions 회원탈퇴여부 팝업
+ * @author 배수영
+ */
+
 public class l_exitpopup extends Activity {
     Button on;
     Button off;

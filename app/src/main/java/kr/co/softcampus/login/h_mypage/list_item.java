@@ -6,6 +6,12 @@ import java.util.Date;
 
 import kr.co.softcampus.login.Connection.Constant;
 
+
+/**
+ * @name list_item
+ * @descriptions transaction 자료형
+ */
+
 public class list_item {
 
     private Date write_date;

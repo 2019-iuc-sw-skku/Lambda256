@@ -34,6 +34,12 @@ import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
 
+
+/**
+ * @name sendfirst
+ * @descriptions 송금창
+ */
+
 public class i_sendfirst extends Activity {
     ImageView homebutton;
     ImageView bell;

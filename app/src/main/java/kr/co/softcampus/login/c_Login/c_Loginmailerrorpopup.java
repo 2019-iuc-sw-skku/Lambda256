@@ -9,6 +9,12 @@ import android.widget.ImageView;
 
 import kr.co.softcampus.login.R;
 
+/**
+ * @name Loginmailerrorpopup
+ * @descriptions 로그인 실패시 팝업 (by 이메일)
+ * @author 배수영
+ */
+
 // This activity is for the popup content.
 public class c_Loginmailerrorpopup extends Activity {
 

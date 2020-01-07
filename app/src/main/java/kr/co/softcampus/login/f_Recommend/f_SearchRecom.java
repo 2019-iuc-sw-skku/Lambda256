@@ -22,6 +22,11 @@ import kr.co.softcampus.login.Connection.Constant;
 import kr.co.softcampus.login.Connection.Server;
 import kr.co.softcampus.login.R;
 
+/**
+ * @name SearchRecom
+ * @descriptions 추천인 입력 액티비
+ */
+
 public class f_SearchRecom extends Activity {
 
     ImageView imageView;
@@ -60,13 +65,7 @@ public class f_SearchRecom extends Activity {
                 address = editText_address_recommender.getText().toString();
 
 
-                /*
-                    성공적으로 추천인 코드를 입력받은 경우
-                    ->   flag = true;
-
-                 */
-
-                // 추천인 코드 등록 코드 - 수정 필요
+                // 추천인 코드 등록 코드
                 AsyncTask<String, Void, Boolean> asyncTask = new AsyncTask<String, Void, Boolean>() {
                     @Override
                     protected Boolean doInBackground(String... strings) {

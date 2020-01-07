@@ -15,6 +15,13 @@ import kr.co.softcampus.login.h_mypage.h_mypage1;
 import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 
+
+/**
+ * @name getskkoin1
+ * @descriptions 스코인 얻는 법 가이드창
+ * @author 배수영
+ */
+
 public class m_getskkoin1 extends Activity {
     ImageView homebutton;
     ImageView bell;

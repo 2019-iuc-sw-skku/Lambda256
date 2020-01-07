@@ -15,6 +15,13 @@ import kr.co.softcampus.login.i_send.i_sendfirst;
 import kr.co.softcampus.login.j_giftcon.j_giftmain;
 import kr.co.softcampus.login.k_infomain;
 
+
+/**
+ * @name skkoin1
+ * @descriptions FAQ
+ * @author 배수영
+ */
+
 public class n_skkoin1 extends Activity {
     ImageView homebutton;
     ImageView bell;

@@ -1,5 +1,10 @@
 package kr.co.softcampus.login.i_send;
 
+/**
+ * @name sendlist_item
+ * @descriptions 송금 자료형
+ */
+
 public class sendlist_item {
     private String address;
     private long token;
